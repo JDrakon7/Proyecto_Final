@@ -1,0 +1,57 @@
+[
+    {"question": "Hola",
+      "alternatives": ["Buenas" , "holas" , "ola"] ,
+      "answer": "Hola soy Botmaster , mi funcion principal es brindar orientacion sobre la logica de programacion en Python"
+    },
+       {"question": "Como estas",
+      "alternatives": ["Como estas" , "como vas" , "que tal" , "que onda"] ,
+      "answer": "Hola soy Botmaster , mi funcion principal es brindar orientacion sobre la logica de programacion en Python"
+    },
+    {
+      "question": "¿Qué es un bucle en Python y cómo se utiliza?",
+      
+      "alternatives": ["Como utilizo un bucle en python","Bucles en python","Que es un bucle" , "Los bucles son?" , "No entiendo que son los bucles"] ,
+
+      "answer": "Un bucle en Python es una estructura de control que permite repetir un bloque de código varias veces mientras se cumple una condición específica. Se puede utilizar el bucle 'for' para iterar sobre una secuencia o el bucle 'while' para repetir hasta que una condición se vuelva falsa."
+    },
+    {
+      "question": "¿Cuál es la diferencia entre un bucle 'for' y un bucle 'while' en Python?",
+
+      "alternatives": ["Diferencias en bucle for y while","For y while diferencias ","While y For diferencias" , "Diferencias de while y for"] ,
+
+      "answer": "Un bucle 'for' en Python se utiliza para iterar sobre una secuencia de elementos, como una lista o una cadena de texto, mientras que un bucle 'while' se ejecuta mientras una condición específica sea verdadera."
+    },
+    {
+      "question": "¿Qué es un condicional 'if-else' en Python y cómo se utiliza?",
+      "answer": "Un condicional 'if-else' en Python es una estructura que permite ejecutar un bloque de código si se cumple una condición y otro bloque de código si la condición no se cumple. Se utiliza para tomar decisiones en base a condiciones."
+    },
+    {
+      "question": "¿Qué son los operadores lógicos en Python y cuáles son sus tipos?",
+      "answer": "Los operadores lógicos en Python (and, or, not) se utilizan para realizar operaciones booleanas como AND, OR y NOT respectivamente. Se utilizan para combinar condiciones en las expresiones lógicas."
+    },
+    {
+      "question": "¿Qué es una lista en Python y cómo se declara?",
+      "answer": "Una lista en Python es una estructura de datos que permite almacenar múltiples valores en una sola variable. Se declara utilizando corchetes y separando los elementos por comas."
+    },
+    {
+      "question": "¿Qué es una función en Python y cuál es su propósito?",
+      "answer": "Una función en Python es un bloque de código que realiza una tarea específica. Su propósito es organizar y reutilizar el código, mejorando la modularidad y la legibilidad del programa. Se define utilizando la palabra clave 'def'."
+    },
+    {
+      "question": "¿Qué es la recursividad en Python y cómo se implementa?",
+      "answer": "La recursividad en Python es cuando una función se llama a sí misma para resolver un problema de manera iterativa. Se implementa definiendo un caso base y un caso recursivo en la función."
+    },
+    {
+      "question": "¿Cuál es la diferencia entre una clase y una función en Python?",
+      "answer": "Una clase en Python es una plantilla que define las propiedades y comportamientos de un objeto, mientras que una función es un bloque de código que realiza una tarea específica. Las clases se definen con la palabra clave 'class' y las funciones con 'def'."
+    },
+    {
+      "question": "¿Qué son las excepciones en Python y cómo se manejan?",
+      "answer": "Las excepciones en Python son eventos que ocurren durante la ejecución de un programa y pueden interrumpir su flujo normal. Se manejan utilizando bloques 'try' y 'except' para atrapar y manejar excepciones."
+    },
+    {
+      "question": "¿Cómo se realiza la entrada y salida de datos en Python?",
+      "answer": "En Python, la entrada de datos se realiza utilizando la función 'input' para obtener datos del usuario, y la salida de datos se realiza utilizando la función 'print' para mostrar resultados en la consola."
+    }
+
+]
