@@ -39,7 +39,7 @@ private static final long serialVersionUID = 1L;
     private void startFlaskServer() {
         executor.submit(() -> {
             try {
-                ProcessBuilder pb = new ProcessBuilder("python", "chatbot.py");
+                ProcessBuilder pb = new ProcessBuilder("chatbot.py");
                 pb.redirectErrorStream(true);
                 flaskProcess = pb.start();
 

@@ -18,7 +18,7 @@ public class Historial {
     private String pregunta;
     private String respuesta;
 
-    // Getters y setters para cada campo
+    // Getters y setters para los 
     public int getId() {
         return id;
     }

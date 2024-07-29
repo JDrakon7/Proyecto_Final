@@ -29,7 +29,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .history-wrap {
@@ -139,4 +139,62 @@ body {
 
 .group.centered {
     text-align: center;
+}
+
+/* 
+    Diseño del historial
+*/
+
+.history-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.history-html {
+    width: 100%;
+    max-width: 800px;
+    background: #f9f9f9;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.history-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.chat-content {
+    max-width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #e0e0e0;
+    position: relative;
+}
+
+.outgoing .chat-content {
+    background-color: #dcf8c6;
+    align-self: flex-end;
+}
+
+.incoming .chat-content {
+    background-color: #ffffff;
+    align-self: flex-start;
+}
+
+.chat-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-details p {
+    margin: 0;
+    word-wrap: break-word;
 }

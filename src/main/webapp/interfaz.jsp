@@ -36,7 +36,7 @@
         <div class="profile-img">
           <i class="fa-solid fa-circle"></i>
         </div>
-         <span><c:out value="${sessionScope.usuario}"/> <i class="fa-solid fa-angle-down"></i></span>
+         <span><c:out value="${sessionScope.role}"/><i class="fa-solid fa-angle-down"></i></span>
       </div>
 
       <ul class="profile-dropdown-list">

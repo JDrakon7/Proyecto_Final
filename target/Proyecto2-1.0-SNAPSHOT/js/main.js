@@ -156,6 +156,15 @@ const handleOutgoingChat = () => {
 // EVENTOS DE BOTONES Y ENTRADA DE TEXTO
 // ======================================================
 
+deleteButton.addEventListener("click", () => {
+    // Remove the chats from local storage and call loadDataFromLocalstorage function
+    if(confirm("¿Está seguro que desea eliminar el chat?")) {
+        localStorage.removeItem("all-chats");
+        loadDataFromLocalstorage();
+    }
+});
+
+
 themeButton.addEventListener("click", () => {
     document.body.classList.toggle("light-mode");
     localStorage.setItem("themeColor", themeButton.innerText);
@@ -227,10 +236,5 @@ document.addEventListener("DOMContentLoaded", function() {
     loadDataFromLocalstorage();
 });
 
-deleteButton.addEventListener("click", () => {
-    // Remove the chats from local storage and call loadDataFromLocalstorage function
-    if(confirm("¿Está seguro que desea eliminar el chat?")) {
-        localStorage.removeItem("all-chats");
-        loadDataFromLocalstorage();
-    }
-});
+
+

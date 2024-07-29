@@ -6,72 +6,37 @@ package Controlador;
 
 import Modelo.Historial.Historial;
 import Modelo.Historial.HistorialDAO;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Date;
-import java.util.List;
+import com.google.gson.Gson;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
+import java.io.IOException;
+import java.util.List;
 
-/**
- *
- * @author JDBJ
- */
-@WebServlet(name = "Servlet_historial", urlPatterns = {"/historial"})
+@WebServlet("/historial")
 public class Servlet_historial extends HttpServlet {
-private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-@Override
+    @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        int idUsuario = (int) session.getAttribute("userId");
+        Integer idUsuario = (Integer) session.getAttribute("userId");
+
+        if (idUsuario == null) {
+            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "User not logged in");
+            return;
+        }
 
         HistorialDAO historialDAO = new HistorialDAO();
         List<Historial> historialList = historialDAO.leerHistorial(idUsuario);
 
         response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        out.write("[");
-        for (int i = 0; i < historialList.size(); i++) {
-            Historial historial = historialList.get(i);
-            out.write("{");
-            out.write("\"id\": " + historial.getId() + ",");
-            out.write("\"fecha\": \"" + historial.getFecha() + "\",");
-            out.write("\"hora\": \"" + historial.getHora() + "\",");
-            out.write("\"pregunta\": \"" + historial.getPregunta() + "\",");
-            out.write("\"respuesta\": \"" + historial.getRespuesta() + "\",");
-            out.write("}");
-            if (i < historialList.size() - 1) {
-                out.write(",");
-            }
-        }
-        out.write("]");
-        out.flush();
-        out.close();
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(new Gson().toJson(historialList));
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        int idUsuario = (int) session.getAttribute("userId");
-
-        String pregunta = request.getParameter("pregunta");
-        String respuesta = request.getParameter("respuesta");
-
-        Historial historial = new Historial();
-        historial.setFecha(new Date());
-        historial.setHora(new Date());
-        historial.setIdUsuario(idUsuario);
-        historial.setPregunta(pregunta);
-        historial.setRespuesta(respuesta);
-
-        HistorialDAO historialDAO = new HistorialDAO();
-        historialDAO.agregarHistorial(historial);
-
-        response.setStatus(HttpServletResponse.SC_CREATED);
+        doGet(request, response);
     }
 }

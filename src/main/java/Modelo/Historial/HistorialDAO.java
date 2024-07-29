@@ -47,7 +47,7 @@ public class HistorialDAO {
 
     // Método para agregar una entrada al historial
     public void agregarHistorial(Historial historial) {
-        String sql = "INSERT INTO tb_historial (fecha, hora, id_usuario, pregunta, respuesta, tipo_interaccion) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO tb_historial (fecha, hora, id_usuario, pregunta, respuesta) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement stmt = cx.prepareStatement(sql)) {
             stmt.setDate(1, new java.sql.Date(historial.getFecha().getTime()));
             stmt.setTime(2, new java.sql.Time(historial.getHora().getTime()));
