@@ -12,6 +12,7 @@ public class Leer_entrenamiento {
     private Conexiondb conexion;
     
      public Leer_entrenamiento() {
+         
         this.conexion = new Conexiondb();
     }
      public void leerEntrenamiento() {
