@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "Servlet_Correo", urlPatterns = {"/ValidarCorreo"})
 public class Servlet_Correo extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
+private static final long serialVersionUID = 1L;
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -32,7 +32,7 @@ public class Servlet_Correo extends HttpServlet {
             request.getSession().setAttribute("emailValidado", email);
             response.getWriter().write("Correo validado.");
         } else {
-            response.getWriter().write("El correo electrónico no está registrado.");
+            response.getWriter().write("El correo electronico no esta registrado.");
         }
     }
 }

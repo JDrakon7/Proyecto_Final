@@ -1,5 +1,6 @@
 Modelo\Login\Login_update.class
 Modelo\JAXRSConfiguration.class
+Controlador\Servlet_Cambiar.class
 Modelo\Historial\Historial_update.class
 Modelo\DAO_login.class
 Modelo\RecuperarContrasena.class

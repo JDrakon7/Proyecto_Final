@@ -24,28 +24,3 @@ document.getElementById('forgot-password-form').addEventListener('submit', funct
 
 
 
-document.getElementById('reset-password-form').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const password = document.getElementById('password').value;
-            const confirmarPassword = document.getElementById('confirmar_password').value;
-
-            if (password !== confirmarPassword) {
-                alert('Las contraseñas no coinciden.');
-                return;
-            }
-
-            const formData = new FormData(this);
-
-            fetch('http://localhost:8080/Proyecto2/CambiarContrasena', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert(data);
-                if (data === "Contraseña cambiada exitosamente.") {
-                    window.location.href = 'index.jsp';
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
