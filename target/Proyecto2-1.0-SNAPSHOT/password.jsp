@@ -10,27 +10,27 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Forgot Password</title>
+        <title>Recuperar Contraseña</title>
         <link rel="stylesheet" href="css/password.css">
     </head>
     <body>
         <div class="forgot-password-wrap">
             <div class="forgot-password-html">
                 <h2 class="title">Recuperar Contraseña</h2>
-                <form id="forgot-password-form" action="cambiarpass.jsp" method="post">
+                <form id="forgot-password-form">
                     <div class="group">
                         <label for="email" class="label">Email</label>
                         <input id="email" name="email" type="email" class="input" required>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button" value="Enviar">
+                        <button type="submit" class="button">Enviar</button>
                     </div>
                 </form>
                 <div class="foot-lnk">
                     <a href="./index.jsp">Volver al Login</a>
                 </div>
             </div>
-        </div>  
+        </div>
         <script src="js/cambiar_password.js"></script>
     </body>
 </html>

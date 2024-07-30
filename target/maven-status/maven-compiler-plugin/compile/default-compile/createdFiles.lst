@@ -28,12 +28,12 @@ Modelo\Entrenamiento\Agregar_entrenamiento.class
 Controlador\Login_servlet.class
 Modelo\Entrenamiento\Entrenamiento_update.class
 Modelo\Entrenamiento\ObtenerCategorias.class
+Controlador\Servlet_Correo.class
 Modelo\Usuario\Eliminar_usuario.class
 Modelo\Historial\HistorialDAO.class
 Controlador\Servlet_crear_usuario.class
 Modelo\Entrenamiento\AgregarCategoria.class
 Controlador\Servlet_actualizar.class
-Controlador\Servlet_recuperar.class
 Modelo\Conexiondb.class
 Modelo\Historial\Leer_Historial.class
 Modelo\Usuario\Leer_usuario.class

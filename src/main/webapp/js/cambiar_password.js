@@ -3,48 +3,49 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Función para validar el correo electrónico en el formulario de recuperación de contraseña
-    function validateEmail() {
-        const email = document.getElementById("email").value;
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const formData = new FormData(this);
 
-        if (!emailPattern.test(email)) {
-            alert("Por favor, introduce un correo electrónico válido.");
-            return false;
-        }
-        return true;
-    }
-
-    // Validación del formulario de restablecimiento de contraseña
-    function validateResetPasswordForm() {
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirmar_password").value;
-
-        if (password !== confirmPassword) {
-            alert("Las contraseñas no coinciden.");
-            return false;
-        }
-        return true;
-    }
-
-    // Asignar la validación al formulario de recuperación de contraseña
-    const forgotPasswordForm = document.getElementById("forgot-password-form");
-    if (forgotPasswordForm) {
-        forgotPasswordForm.addEventListener("submit", function(event) {
-            if (!validateEmail()) {
-                event.preventDefault();
-            }
+            fetch('http://localhost:8080/Proyecto2/ValidarCorreo', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                if (data === "Correo validado.") {
+                    window.location.href = 'cambiarpass.jsp';
+                } else {
+                    alert(data);
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
-    }
 
-    // Asignar la validación al formulario de restablecimiento de contraseña
-    const resetPasswordForm = document.getElementById("reset-password-form");
-    if (resetPasswordForm) {
-        resetPasswordForm.addEventListener("submit", function(event) {
-            if (!validateResetPasswordForm()) {
-                event.preventDefault();
+
+
+document.getElementById('reset-password-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const password = document.getElementById('password').value;
+            const confirmarPassword = document.getElementById('confirmar_password').value;
+
+            if (password !== confirmarPassword) {
+                alert('Las contraseñas no coinciden.');
+                return;
             }
+
+            const formData = new FormData(this);
+
+            fetch('http://localhost:8080/Proyecto2/CambiarContrasena', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert(data);
+                if (data === "Contraseña cambiada exitosamente.") {
+                    window.location.href = 'index.jsp';
+                }
+            })
+            .catch(error => console.error('Error:', error));
         });
-    }
-});

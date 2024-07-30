@@ -15,8 +15,7 @@
         <div class="reset-password-wrap">
             <div class="reset-password-html">
                 <h2 class="title">Restablecer Contraseña</h2>
-                <form id="reset-password-form" action="RecuperarContrasena" method="post">
-                    <input type="hidden" name="token" value="<%= request.getParameter("token") %>">
+                <form id="reset-password-form">
                     <div class="group">
                         <label for="password" class="label">Nueva Contraseña</label>
                         <input id="password" name="password" type="password" class="input" required>
@@ -26,7 +25,7 @@
                         <input id="confirmar_password" name="confirmar_password" type="password" class="input" required>
                     </div>
                     <div class="group">
-                        <input type="submit" class="button" value="Enviar">
+                        <button type="submit" class="button">Enviar</button>
                     </div>
                 </form>
                 <div class="foot-lnk">
