@@ -4,12 +4,60 @@
  */
 
 
-// Código JavaScript para cargar las categorías desde la base de datos
+// Cargar entrenamientos
+function cargarEntrenamientos() {
+    fetch('http://localhost:8080/Proyecto2/EntrenamientoServlet?action=leerEntrenamientos')
+        .then(response => response.json())
+        .then(data => {
+            const entrenamientosList = document.getElementById('entrenamientos-list');
+            entrenamientosList.innerHTML = '';
+            data.forEach(entrenamiento => {
+                const entrenamientoDiv = document.createElement('div');
+                entrenamientoDiv.innerHTML = `
+                    <div>
+                        <strong>Pregunta:</strong> ${entrenamiento.pregunta}
+                        <strong>Respuesta:</strong> ${entrenamiento.respuesta}
+                        <button onclick="editarEntrenamiento(${entrenamiento.idEntrenamiento})">Editar</button>
+                        <button onclick="eliminarEntrenamiento(${entrenamiento.idEntrenamiento})">Eliminar</button>
+                    </div>
+                `;
+                entrenamientosList.appendChild(entrenamientoDiv);
+            });
+        })
+        .catch(error => console.error('Error al cargar los entrenamientos:', error));
+}
+
+// Editar entrenamiento
+function editarEntrenamiento(id) {
+    // Lógica para editar un entrenamiento
+    // Aquí podrías abrir un formulario con los datos actuales y permitir que el usuario los edite
+}
+
+// Eliminar entrenamiento
+function eliminarEntrenamiento(id) {
+    if (confirm('¿Estás seguro de que deseas eliminar este entrenamiento?')) {
+        fetch('http://localhost:8080/Proyecto2/EntrenamientoServlet?action=eliminarEntrenamiento', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `id_entrenamiento=${id}`
+        })
+        .then(response => response.text())
+        .then(data => {
+            alert(data);
+            cargarEntrenamientos();
+        })
+        .catch(error => console.error('Error al eliminar el entrenamiento:', error));
+    }
+}
+
+// Código para cargar categorías y agregar nuevas
 window.addEventListener('DOMContentLoaded', (event) => {
-    fetch('ObtenerCategorias')
+    fetch('http://localhost:8080/Proyecto2/EntrenamientoServlet?action=obtenerCategorias')
         .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error('Error en la solicitud, inténtelo nuevamente');
             }
             return response.json();
         })
@@ -42,7 +90,7 @@ document.getElementById('submit-category-btn').addEventListener('click', () => {
     const formData = new FormData();
     formData.append('nombre_categoria', newCategory);
 
-    fetch('AgregarCategoria', {
+    fetch('http://localhost:8080/Proyecto2/AgregarCategoria', {
         method: 'POST',
         body: formData
     })
@@ -51,7 +99,7 @@ document.getElementById('submit-category-btn').addEventListener('click', () => {
         alert('Categoria agregada exitosamente.');
         document.getElementById('new-category').value = ''; // Limpiar el campo de texto
         document.getElementById('category-form').style.display = 'none'; // Ocultar el formulario de agregar categoría
-        fetch('ObtenerCategorias')  // Recargar las categorías
+        fetch('http://localhost:8080/Proyecto2/EntrenamientoServlet?action=obtenerCategorias')  // Recargar las categorías
             .then(response => response.json())
             .then(data => {
                 const categoriaSelect = document.getElementById('categoria');
@@ -64,5 +112,5 @@ document.getElementById('submit-category-btn').addEventListener('click', () => {
                 });
             });
     })
-    .catch(error => console.error('Error al agregar la categoria:', error));
+    .catch(error => console.error('Error al agregar la categoría:', error));
 });

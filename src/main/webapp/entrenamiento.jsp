@@ -16,7 +16,8 @@
     <div class="profile-wrap">
         <div class="profile-html">
             <h2>Entrenar Chatbot</h2>
-            <form id="training-form" action="AgregarEntrenamiento" method="post">
+            <form id="training-form" action="EntrenamientoServlet" method="post">
+                <input type="hidden" name="action" value="agregarEntrenamiento">
                 <div class="group">
                     <label for="pregunta" class="label">Pregunta</label>
                     <input id="pregunta" type="text" class="input" name="pregunta" required>
@@ -49,9 +50,14 @@
             <div class="group centered">
                 <a href="javascript:history.back()" class="back-button">Volver</a>
             </div>
+            <div class="group centered">
+                <h3>Lista de Entrenamientos</h3>
+                <div id="entrenamientos-list"></div>
+            </div>
         </div>
     </div>
     <script src="js/entrenamiento.js"></script>
 </body>
 </html>
+
     

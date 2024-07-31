@@ -39,7 +39,8 @@ private static final long serialVersionUID = 1L;
     private void startFlaskServer() {
         executor.submit(() -> {
             try {
-                ProcessBuilder pb = new ProcessBuilder("chatbot.py");
+                 String scriptPath = "D:\\Usuario\\Desktop\\Proyecto Final\\src\\main\\java\\Modelo\\chatbot.py"; // Cambia esto por la ruta correcta
+                ProcessBuilder pb = new ProcessBuilder("D:\\Python\\python.exe", scriptPath);
                 pb.redirectErrorStream(true);
                 flaskProcess = pb.start();
 
