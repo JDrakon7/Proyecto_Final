@@ -27,8 +27,9 @@
       <li><a href="historial.jsp">Historial</a></li>
       <c:if test="${sessionScope.role == 'admin' || sessionScope.role == 'superadmin'}">
         <li><a href="./entrenamiento.jsp">Entrenamiento</a></li>
-      </c:if>
-      <li><a href="./ayuda-soporte.jsp">About</a></li>      
+        <li><a href="./gestionentrenamiento.jsp">Gestionar entrenamiento</a></li>      
+        </c:if>
+      <li><a href="./ayuda-soporte.jsp">About</a></li>     
     </ul>
 
     <div class="profile-dropdown">
@@ -36,16 +37,15 @@
         <div class="profile-img">
           <i class="fa-solid fa-circle"></i>
         </div>
-         <span><c:out value="${sessionScope.role}"/><i class="fa-solid fa-angle-down"></i></span>
+         <span><c:out value="${sessionScope.nombre}"/><i class="fa-solid fa-angle-down"></i></span>
       </div>
 
       <ul class="profile-dropdown-list">
-        <li class="profile-dropdown-list-item"><a href="./perfil.jsp"><i class="fa-regular fa-user"></i> Edit Profile</a></li>
-        <li class="profile-dropdown-list-item"><a href="#"><i class="fa-solid fa-chart-line"></i> Analytics</a></li>
-        <li class="profile-dropdown-list-item"><a href="#"><i class="fa-solid fa-sliders"></i> Settings</a></li>
-        <li class="profile-dropdown-list-item"><a href="./ayuda-soporte.jsp"><i class="fa-regular fa-circle-question"></i> Help & Support</a></li>
+        <li class="profile-dropdown-list-item"><a href="./perfil.jsp"><i class="fa-regular fa-user"></i> Editar Perfil</a></li>
+        <li class="profile-dropdown-list-item"><a href="configuracion.jsp"><i class="fa-solid fa-sliders"></i>Configuracion</a></li>
+        <li class="profile-dropdown-list-item"><a href="./ayuda-soporte.jsp"><i class="fa-regular fa-circle-question"></i> Ayuda y Soporte</a></li>
         <hr />
-        <li class="profile-dropdown-list-item"><a href="index.jsp"><i class="fa-solid fa-arrow-right-from-bracket"></i> Log out</a></li>
+        <li class="profile-dropdown-list-item"><a href="index.jsp"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesion</a></li>
       </ul>
     </div>
   </nav>

@@ -21,6 +21,7 @@ public class Login_servlet extends HttpServlet {
         // Obtener parámetros de la solicitud
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        
 
         // Crear una instancia del DAO_login
         DAO_login daoLogin = new DAO_login();
@@ -33,10 +34,15 @@ public class Login_servlet extends HttpServlet {
             session.setAttribute("email", email);  // Guardar el email en la sesión
             session.setAttribute("role", user.getRole());  // Guardar el rol en la sesión
             session.setAttribute("userId", user.getUserId());  // Guardar el user_id en la sesión
+            session.setAttribute("nombre", user.getUsername());  // Guardar el nombre del usuario en la sesión
             response.sendRedirect("interfaz.jsp");  // Redirigir a la interfaz principal
+            
         } else {
             // Si la validación falla, se redirige al usuario a la página de inicio con un error
             response.sendRedirect("index.jsp?error=true");
         }
     }
+    
+    
+
 }

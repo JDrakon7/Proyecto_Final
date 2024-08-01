@@ -25,6 +25,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/EntrenamientoServlet")
 public class EntrenamientoServlet extends HttpServlet {
+
     private Conexiondb conexion;
 
     public EntrenamientoServlet() {
@@ -33,6 +34,9 @@ public class EntrenamientoServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
         if ("obtenerCategorias".equals(action)) {
             obtenerCategorias(response);
@@ -43,40 +47,19 @@ public class EntrenamientoServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("application/json; charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
         String action = request.getParameter("action");
+
         if ("agregarEntrenamiento".equals(action)) {
             agregarEntrenamiento(request, response);
-        } else if ("actualizarEntrenamiento".equals(action)) {
+        } else if ("editarEntrenamiento".equals(action)) {
             actualizarEntrenamiento(request, response);
         } else if ("eliminarEntrenamiento".equals(action)) {
             eliminarEntrenamiento(request, response);
         } else if ("agregarCategoria".equals(action)) {
             agregarCategoria(request, response);
-        }
-    }
-
-    private void obtenerCategorias(HttpServletResponse response) throws IOException {
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        Connection cx = conexion.Conectar();
-        String sql = "SELECT * FROM tb_categorias";
-        List<Categoria> categorias = new ArrayList<>();
-
-        try (Statement stmt = cx.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
-            while (rs.next()) {
-                Categoria categoria = new Categoria();
-                categoria.setIdCategoria(rs.getInt("id_categoria"));
-                categoria.setNombreCategoria(rs.getString("nombre_categoria"));
-                categorias.add(categoria);
-            }
-            String json = new Gson().toJson(categorias);
-            out.print(json);
-            out.flush();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            conexion.desconectar();
         }
     }
 
@@ -87,8 +70,7 @@ public class EntrenamientoServlet extends HttpServlet {
         String sql = "SELECT * FROM tb_entrenamiento";
         List<Entrenamiento> entrenamientos = new ArrayList<>();
 
-        try (Statement stmt = cx.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+        try (Statement stmt = cx.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
             while (rs.next()) {
                 Entrenamiento entrenamiento = new Entrenamiento();
                 entrenamiento.setIdEntrenamiento(rs.getInt("id_entrenamiento"));
@@ -126,19 +108,36 @@ public class EntrenamientoServlet extends HttpServlet {
             pstmt.setInt(3, usuarioId);
             pstmt.setInt(4, categoria);
             pstmt.executeUpdate();
-            response.getWriter().write("Pregunta y respuesta agregadas exitosamente.");
+            response.setContentType("application/json");
+            response.getWriter().write("{\"message\": \"Pregunta y respuesta agregadas exitosamente.\"}");
         } catch (SQLException e) {
-            response.getWriter().write("Error al agregar datos: " + e.getMessage());
+            response.setContentType("application/json");
+            response.getWriter().write("{\"error\": \"Error al agregar datos: " + e.getMessage() + "\"}");
         } finally {
             conexion.desconectar();
         }
     }
 
-    private void actualizarEntrenamiento(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        int idEntrenamiento = Integer.parseInt(request.getParameter("id_entrenamiento"));
+    protected void actualizarEntrenamiento(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String idEntrenamientoStr = request.getParameter("id_entrenamiento");
         String pregunta = request.getParameter("pregunta");
         String respuesta = request.getParameter("respuesta");
-        int categoria = Integer.parseInt(request.getParameter("categoria"));
+        String categoriaStr = request.getParameter("categoria");
+
+        if (idEntrenamientoStr == null || pregunta == null || respuesta == null || categoriaStr == null) {
+            response.getWriter().write("Error: todos los parámetros son obligatorios.");
+            return;
+        }
+
+        int idEntrenamiento;
+        int categoria;
+        try {
+            idEntrenamiento = Integer.parseInt(idEntrenamientoStr);
+            categoria = Integer.parseInt(categoriaStr);
+        } catch (NumberFormatException e) {
+            response.getWriter().write("Error: formato de ID o categoría no válido.");
+            return;
+        }
 
         Connection cx = conexion.Conectar();
         String sql = "UPDATE tb_entrenamiento SET pregunta = ?, respuesta = ?, id_categoria = ? WHERE id_entrenamiento = ?";
@@ -148,8 +147,13 @@ public class EntrenamientoServlet extends HttpServlet {
             pstmt.setString(2, respuesta);
             pstmt.setInt(3, categoria);
             pstmt.setInt(4, idEntrenamiento);
-            pstmt.executeUpdate();
-            response.getWriter().write("Entrenamiento actualizado exitosamente.");
+            int rowsAffected = pstmt.executeUpdate();
+
+            if (rowsAffected > 0) {
+                response.getWriter().write("Entrenamiento actualizado exitosamente.");
+            } else {
+                response.getWriter().write("Error: no se encontró el entrenamiento con el ID especificado.");
+            }
         } catch (SQLException e) {
             response.getWriter().write("Error al actualizar datos: " + e.getMessage());
         } finally {
@@ -183,15 +187,40 @@ public class EntrenamientoServlet extends HttpServlet {
         try (PreparedStatement pstmt = cx.prepareStatement(sql)) {
             pstmt.setString(1, nombreCategoria);
             pstmt.executeUpdate();
-            response.getWriter().write("Categoría agregada exitosamente.");
+            response.getWriter().write("{\"message\": \"Categoría agregada exitosamente.\"}");
         } catch (SQLException e) {
-            response.getWriter().write("Error al agregar datos: " + e.getMessage());
+            response.getWriter().write("{\"error\": \"Error al agregar datos: " + e.getMessage() + "\"}");
+        } finally {
+            conexion.desconectar();
+        }
+    }
+
+    private void obtenerCategorias(HttpServletResponse response) throws IOException {
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        Connection cx = conexion.Conectar();
+        String sql = "SELECT * FROM tb_categorias";
+        List<Categoria> categorias = new ArrayList<>();
+
+        try (Statement stmt = cx.createStatement(); ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setIdCategoria(rs.getInt("id_categoria"));
+                categoria.setNombreCategoria(rs.getString("nombre_categoria"));
+                categorias.add(categoria);
+            }
+            String json = new Gson().toJson(categorias);
+            out.print(json);
+            out.flush();
+        } catch (SQLException e) {
+            e.printStackTrace();
         } finally {
             conexion.desconectar();
         }
     }
 
     class Categoria {
+
         private int idCategoria;
         private String nombreCategoria;
 
@@ -213,6 +242,7 @@ public class EntrenamientoServlet extends HttpServlet {
     }
 
     class Entrenamiento {
+
         private int idEntrenamiento;
         private String pregunta;
         private String respuesta;

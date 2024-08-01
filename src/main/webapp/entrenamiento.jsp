@@ -51,8 +51,7 @@
                 <a href="javascript:history.back()" class="back-button">Volver</a>
             </div>
             <div class="group centered">
-                <h3>Lista de Entrenamientos</h3>
-                <div id="entrenamientos-list"></div>
+                <a href="gestionentrenamiento.jsp">Verificar Lista de Entrenamientos </a> 
             </div>
         </div>
     </div>

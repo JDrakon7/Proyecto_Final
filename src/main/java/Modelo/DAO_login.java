@@ -72,7 +72,8 @@ public class DAO_login {
     // Método combinado para obtener tanto el userId como el rol
     public User validateAndGetUser(String email, String password) {
         User user = null;
-        String sql = "SELECT l.id_usuario, r.nombre_rol FROM tb_login l " +
+        String sql = "SELECT l.id_usuario, r.nombre_rol, u.nombre " +
+                     "FROM tb_login l " +
                      "JOIN tb_usuario u ON l.id_usuario = u.id_usuario " +
                      "JOIN tb_roles r ON u.id_rol = r.id_rol " +
                      "WHERE l.email = ? AND l.password = ?";
@@ -86,7 +87,8 @@ public class DAO_login {
                 if (rs.next()) {
                     int userId = rs.getInt("id_usuario");
                     String role = rs.getString("nombre_rol");
-                    user = new User(userId, role);
+                    String username = rs.getString("nombre");
+                    user = new User(userId, role , username);
                 }
             }
         } catch (SQLException e) {
@@ -99,12 +101,14 @@ public class DAO_login {
     public static class User {
         private int userId;
         private String role;
+        private String username;
 
-        public User(int userId, String role) {
+        public User(int userId, String role , String username) {
             this.userId = userId;
             this.role = role;
+            this.username = username;
         }
-
+        
         public int getUserId() {
             return userId;
         }
@@ -112,5 +116,9 @@ public class DAO_login {
         public String getRole() {
             return role;
         }
+
+        public String getUsername() {
+            return username;
+        }
     }
-}
+}      
