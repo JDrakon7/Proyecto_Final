@@ -47,7 +47,6 @@ public class Login_servlet extends HttpServlet {
         } else {
             // Si la validación falla, se redirige al usuario a la página de inicio con un error
              response.sendRedirect("index.jsp?error=invalid_credentials");
-             response.sendRedirect("index.jsp");
      
             
             

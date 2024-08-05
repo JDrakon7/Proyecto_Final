@@ -37,6 +37,7 @@ Modelo\Categorias\ObtenerCategorias.class
 Modelo\Entrenamiento\AgregarEntrenamiento.class
 Controlador\JavaEE8Resource.class
 Modelo\Login\Leer_login.class
+Modelo\Encriptar.class
 com\mycompany\proyecto2\JakartaRestConfiguration.class
 Controlador\Login_servlet.class
 Controlador\Servlet_Usuario.class

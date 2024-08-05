@@ -1,46 +1,47 @@
-D:\Usuario\Desktop\Proyecto Final\src\main\java\com\mycompany\proyecto2\JakartaRestConfiguration.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\ServletActualizarEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\Historial_update.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\ServletAgregarEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Entrenamiento\LeerEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Categorias\AgregarCategoria.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Categorias\Editar_Categorias.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_actualizar.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_Correovalidar.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Login\Leer_login.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\JavaEE8Resource.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_Usuario.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\HistorialDAO.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\Historial.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_historial.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Entrenamiento\AgregarEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\VerHistorialServlet.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Entrenamiento\ActualizarEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Usuario\Eliminar_usuario.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Entrenamiento\EliminarEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_crear_usuario.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Login\Login_update.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\RecuperarContrasena.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Categorias\Eliminar_Categorias.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\ActualizarPerfil.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Conexiondb.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\DAO_login.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Login\Eliminar_Login.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Usuario\Leer_usuario.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\Crear_historial.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\JAXRSConfiguration.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_EliminarHistorial.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\ServletEliminarEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\com\mycompany\proyecto2\resources\JakartaEE8Resource.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_FlaskServer.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Usuario\Usuario_update.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Servlet_Cambiarpass.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Entrenamiento\Entrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\Eliminar_historial.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Categorias\ObtenerCategorias.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Categorias\Categoria.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Login\Crear_login.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Usuario\Crear_usuario.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\ServletLeerEntrenamiento.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Modelo\Historial\Leer_Historial.java
-D:\Usuario\Desktop\Proyecto Final\src\main\java\Controlador\Login_servlet.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Login_servlet.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Usuario\Leer_usuario.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Entrenamiento\Entrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\ServletAgregarEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Login\Leer_login.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Categorias\ObtenerCategorias.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\HistorialDAO.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Conexiondb.java
+D:\ZJD\Proyecto_Final\src\main\java\com\mycompany\proyecto2\resources\JakartaEE8Resource.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\Leer_Historial.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Categorias\AgregarCategoria.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\DAO_login.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Login\Eliminar_Login.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\ServletLeerEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Usuario\Crear_usuario.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_historial.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\Historial.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Login\Login_update.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Categorias\Editar_Categorias.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\JAXRSConfiguration.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Entrenamiento\EliminarEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\com\mycompany\proyecto2\JakartaRestConfiguration.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_FlaskServer.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Entrenamiento\LeerEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\VerHistorialServlet.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\Historial_update.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Entrenamiento\AgregarEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\RecuperarContrasena.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Usuario\Usuario_update.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_Cambiarpass.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_Correovalidar.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Categorias\Categoria.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_EliminarHistorial.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\Crear_historial.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Categorias\Eliminar_Categorias.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\JavaEE8Resource.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Login\Crear_login.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\ActualizarPerfil.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_Usuario.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\escriptar.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Usuario\Eliminar_usuario.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\ServletEliminarEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Entrenamiento\ActualizarEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\ServletActualizarEntrenamiento.java
+D:\ZJD\Proyecto_Final\src\main\java\Modelo\Historial\Eliminar_historial.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_crear_usuario.java
+D:\ZJD\Proyecto_Final\src\main\java\Controlador\Servlet_actualizar.java
