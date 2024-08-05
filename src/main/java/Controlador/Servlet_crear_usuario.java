@@ -23,13 +23,13 @@ public class Servlet_crear_usuario extends HttpServlet {
 
         // Verificar que los emails coinciden
         if (!email.equals(confirmarEmail)) {
-            response.sendRedirect("index.jsp?error=email_mismatch");
+            response.sendRedirect("email_mismatch");
             return;
         }
 
         // Verificar que las contraseñas coinciden
         if (!password.equals(confirmarPassword)) {
-            response.sendRedirect("index.jsp?error=password_mismatch");
+            response.sendRedirect("password_mismatch");
             return;
         }
 
@@ -49,9 +49,9 @@ public class Servlet_crear_usuario extends HttpServlet {
 
         // Redirigir a una página de éxito o la lista de usuarios
         if (isUserCreated) {
-            response.sendRedirect("index.jsp?success=true");
+            response.sendRedirect("success");
         } else {
-            response.sendRedirect("index.jsp?error=creation_failed");
+            response.sendRedirect("creation_failed");
         }
     }
 }
