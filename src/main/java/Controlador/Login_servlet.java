@@ -22,6 +22,11 @@ public class Login_servlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         
+        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
+            response.sendRedirect("index.jsp?error=empty_fields");
+            return  ;
+        }
+
 
         // Crear una instancia del DAO_login
         DAO_login daoLogin = new DAO_login();
@@ -37,12 +42,28 @@ public class Login_servlet extends HttpServlet {
             session.setAttribute("nombre", user.getUsername());  // Guardar el nombre del usuario en la sesión
             response.sendRedirect("interfaz.jsp");  // Redirigir a la interfaz principal
             
+            
+            
         } else {
             // Si la validación falla, se redirige al usuario a la página de inicio con un error
-            response.sendRedirect("index.jsp?error=true");
+             response.sendRedirect("index.jsp?error=invalid_credentials");
+             response.sendRedirect("index.jsp");
+     
+            
+            
         }
     }
     
-    
-
+    // Método que maneja las solicitudes GET para cierre de sesión
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if ("logout".equals(action)) {
+            HttpSession session = request.getSession();
+            session.invalidate(); // Invalidar la sesión
+            response.sendRedirect("index.jsp"); // Redirigir a la página de inicio de sesión
+            
+        }
+    }
 }
+    

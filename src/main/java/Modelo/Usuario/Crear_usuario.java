@@ -1,6 +1,7 @@
 package Modelo.Usuario;
 
 import Modelo.Conexiondb;
+import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -32,6 +33,9 @@ public class Crear_usuario {
                 psUsuario.setString(3, fechaRegistro);
                 psUsuario.setInt(4, rol);
                 psUsuario.executeUpdate();
+                
+                 // Encriptar la contraseña usando BCrypt   
+                 String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
 
                 // Obtener el ID generado del usuario
                 try (ResultSet rs = psUsuario.getGeneratedKeys()) {
@@ -42,7 +46,7 @@ public class Crear_usuario {
                             // Establecer los parámetros para insertar en tb_login
                             psLogin.setInt(1, idUsuario);
                             psLogin.setString(2, email);
-                            psLogin.setString(3, password);
+                            psLogin.setString(3, hashedPassword);
                             psLogin.executeUpdate();
                         }
                     }

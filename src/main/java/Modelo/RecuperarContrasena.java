@@ -5,10 +5,12 @@
 
 package Modelo;
 
+import Modelo.Conexiondb;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import org.mindrot.jbcrypt.BCrypt;
 
 public class RecuperarContrasena {
 
@@ -37,11 +39,14 @@ public class RecuperarContrasena {
 
     // Método para actualizar la contraseña del usuario
     public boolean actualizarContrasena(String email, String nuevaContrasena) {
-        String sql = "UPDATE tb_usuario SET password = ? WHERE email = ?";
+        String sql = "UPDATE tb_login SET password = ? WHERE email = ?";
         try (Connection cx = conexion.Conectar();
              PreparedStatement ps = cx.prepareStatement(sql)) {
 
-            ps.setString(1, nuevaContrasena);
+            // Encriptar la nueva contraseña usando BCrypt
+            String hashedPassword = BCrypt.hashpw(nuevaContrasena, BCrypt.gensalt());
+
+            ps.setString(1, hashedPassword);
             ps.setString(2, email);
             int rowsUpdated = ps.executeUpdate();
             return rowsUpdated > 0;

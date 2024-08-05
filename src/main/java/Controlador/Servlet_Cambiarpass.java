@@ -12,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author JDBJ
- */
 @WebServlet(name = "Servlet_Cambiarpass", urlPatterns = {"/contrasena"})
 public class Servlet_Cambiarpass extends HttpServlet {
 

@@ -7,6 +7,8 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, javax.servlet.*, javax.servlet.http.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page import="javax.servlet.http.*, javax.servlet.*" %>
+
 
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -45,7 +47,7 @@
         <li class="profile-dropdown-list-item"><a href="configuracion.jsp"><i class="fa-solid fa-sliders"></i>Configuracion</a></li>
         <li class="profile-dropdown-list-item"><a href="./ayuda-soporte.jsp"><i class="fa-regular fa-circle-question"></i> Ayuda y Soporte</a></li>
         <hr />
-        <li class="profile-dropdown-list-item"><a href="index.jsp"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesion</a></li>
+        <li class="profile-dropdown-list-item" id="logout-link"><a href="#" onclick="logout();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</a></li>
       </ul>
     </div>
   </nav>
@@ -66,5 +68,42 @@
     </div>
   </div>
   <script src="js/main.js"></script>
+  <script type="text/javascript">
+    (function(global) {
+        if (typeof(global) === "undefined") {
+            throw new Error("Ventana no disponible");
+        }
+        
+        var _hash = "!";
+        var noBackPlease = function() {
+            global.location.href += "#";
+
+      
+            global.setTimeout(function() {
+                global.location.href += "!";
+            }, 50);
+        };
+
+        global.onhashchange = function() {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+
+        global.onload = function() {
+            noBackPlease();
+
+            document.body.onkeydown = function(e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                    e.preventDefault();
+                }
+      
+                e.stopPropagation();
+            };
+        };
+    })(window);
+</script>
+
 </body>
 </html>

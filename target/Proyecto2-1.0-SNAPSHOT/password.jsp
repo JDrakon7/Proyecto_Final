@@ -17,7 +17,7 @@
     <div class="forgot-password-wrap">
         <div class="forgot-password-html">
             <h2 class="title">Recuperar Contraseña</h2>
-            <form id="forgot-password-form">
+            <form id="forgot-password-form" action="ValidarCorreo" method="post">
                 <div class="group">
                     <label for="email" class="label">Email</label>
                     <input id="email" name="email" type="email" class="input" required>
@@ -31,27 +31,8 @@
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
-
-                fetch('ValidarCorreo', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(data => {
-                    if (data === "Correo validado.") {
-                        window.location.href = 'cambiarpass.jsp';
-                    } else {
-                        alert(data);
-                    }
-                })
-                .catch(error => console.error('Error:', error));
-            });
-        });
-    </script>
 </body>
+<script src="js/cambiar_password.js"></script>
 </html>
+
+    

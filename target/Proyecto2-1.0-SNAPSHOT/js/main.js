@@ -8,9 +8,9 @@
 // ======================================================
 
 fetch("startFlaskServer")
-  .then(response => response.text())
-  .then(data => console.log(data))
-  .catch(error => console.error("Error al iniciar el servidor Flask:", error));
+        .then(response => response.text())
+        .then(data => console.log(data))
+        .catch(error => console.error("Error al iniciar el servidor Flask:", error));
 
 // ======================================================
 // VARIABLES Y SELECCIÓN DE ELEMENTOS DEL DOM
@@ -50,6 +50,8 @@ themeButton.addEventListener("click", () => {
     localStorage.setItem("themeColor", themeButton.innerText);
     themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 });
+
+
 
 // ======================================================
 // FUNCIONES PARA CARGAR Y GUARDAR CHATS
@@ -134,7 +136,8 @@ const showTypingAnimation = () => {
 
 const handleOutgoingChat = () => {
     userText = chatInput.value.trim();
-    if(!userText) return;
+    if (!userText)
+        return;
 
     chatInput.value = "";
     chatInput.style.height = `${initialInputHeight}px`;
@@ -157,24 +160,50 @@ const handleOutgoingChat = () => {
 // ======================================================
 
 deleteButton.addEventListener("click", () => {
-    // Remove the chats from local storage and call loadDataFromLocalstorage function
-    if(confirm("¿Está seguro que desea eliminar el chat?")) {
+    //Eliminar todos los chats de la pagina principal
+    if (confirm("¿Está seguro que desea eliminar el chat?")) {
         localStorage.removeItem("all-chats");
         loadDataFromLocalstorage();
     }
 });
 
+document.addEventListener('DOMContentLoaded', (event) => {
+    const logoutLink = document.getElementById('logout-link');
 
-themeButton.addEventListener("click", () => {
-    document.body.classList.toggle("light-mode");
-    localStorage.setItem("themeColor", themeButton.innerText);
-    themeButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
+    if (logoutLink) {
+        logoutLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Evita la redirección inmediata
+
+            // Eliminar el chat del localStorage
+            localStorage.removeItem("all-chats");
+
+            // Borra la sesión
+            fetch('login?action=logout', {
+                method: 'POST'
+            }).then(() => {
+                // Redirige a la página de inicio de sesión
+                window.location.href = 'index.jsp';
+
+                // Deshabilitar la función de retroceso del navegador
+                window.history.pushState(null, null, window.location.href);
+                window.onpopstate = function () {
+                    window.history.go(1);
+                };
+            });
+        });
+    }
 });
 
+
+
+
+// ======================================================
+//  Apartado para recibir respuestas del chatbot
+// ======================================================
 const initialInputHeight = chatInput.scrollHeight;
 
-chatInput.addEventListener("input", () => {   
-    chatInput.style.height =  `${initialInputHeight}px`;
+chatInput.addEventListener("input", () => {
+    chatInput.style.height = `${initialInputHeight}px`;
     chatInput.style.height = `${chatInput.scrollHeight}px`;
 });
 
@@ -185,12 +214,12 @@ chatInput.addEventListener("keydown", (e) => {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
     const sendButton = document.getElementById("send-btn");
     const chatInput = document.getElementById("chat-input");
     const chatContainer = document.getElementById("chat-container");
 
-    sendButton.addEventListener("click", function() {
+    sendButton.addEventListener("click", function () {
         const userMessage = chatInput.value;
         if (userMessage.trim() !== "") {
             appendMessage("Tu", userMessage);
@@ -199,7 +228,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    chatInput.addEventListener("keypress", function(event) {
+    chatInput.addEventListener("keypress", function (event) {
         if (event.key === "Enter") {
             event.preventDefault();
             sendButton.click();
@@ -220,17 +249,17 @@ document.addEventListener("DOMContentLoaded", function() {
             headers: {
                 "Content-Type": "application/json"
             },
-            body: JSON.stringify({ question: message })
+            body: JSON.stringify({question: message})
         })
-        .then(response => response.json())
-        .then(data => {
-            const botMessage = data.answer;
-            appendMessage("Botmaster", botMessage);
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            appendMessage("Botmaster", "Lo lamento en este momento no puedo responder a tu pregunta.");
-        });
+                .then(response => response.json())
+                .then(data => {
+                    const botMessage = data.answer;
+                    appendMessage("Botmaster", botMessage);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    appendMessage("Botmaster", "Lo lamento en este momento no puedo responder a tu pregunta.");
+                });
     }
 
     loadDataFromLocalstorage();

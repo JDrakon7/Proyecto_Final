@@ -47,7 +47,7 @@
 
                 const formData = new FormData(this);
 
-                fetch('CambiarContrasena', {
+                fetch('contrasena', {
                     method: 'POST',
                     body: formData
                 })
