@@ -19,6 +19,8 @@ public class Servlet_Cambiarpass extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("UTF-8");
+        response.setContentType("text/html; charset=UTF-8");
         String email = (String) request.getSession().getAttribute("emailValidado");
         String nuevaContrasena = request.getParameter("password");
 

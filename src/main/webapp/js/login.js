@@ -4,7 +4,7 @@
  */
 
 document.addEventListener('DOMContentLoaded', function() {
-    var form = document.getElementById('login-form');
+    let form = document.getElementById('login-form');
     if (form) {
         form.addEventListener('submit', function(event) {
             var email = document.getElementById('user').value.trim();
@@ -23,14 +23,5 @@ document.addEventListener('DOMContentLoaded', function() {
     const error = urlParams.get('error');
     if (error === 'invalid_credentials') {
         alert('Credenciales incorrectas. Por favor, intente de nuevo.');
-        // Eliminar el parámetro de la URL
-        urlParams.delete('error');
-        window.history.replaceState({}, document.title, window.location.pathname);
-    } else if (error === 'empty_fields') {
-        alert('Por favor, complete todos los campos.');
-        // Eliminar el parámetro de la URL
-        urlParams.delete('error');
-        window.history.replaceState({}, document.title, window.location.pathname);
     }
 });
-

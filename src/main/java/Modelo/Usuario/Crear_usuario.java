@@ -34,9 +34,7 @@ public class Crear_usuario {
                 psUsuario.setInt(4, rol);
                 psUsuario.executeUpdate();
                 
-                 // Encriptar la contraseña usando BCrypt   
-                 String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
-
+               
                 // Obtener el ID generado del usuario
                 try (ResultSet rs = psUsuario.getGeneratedKeys()) {
                     if (rs.next()) {
@@ -44,6 +42,8 @@ public class Crear_usuario {
 
                         try (PreparedStatement psLogin = cx.prepareStatement(sqlLogin)) {
                             // Establecer los parámetros para insertar en tb_login
+                             // Encriptar la contraseña usando BCrypt   
+                            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
                             psLogin.setInt(1, idUsuario);
                             psLogin.setString(2, email);
                             psLogin.setString(3, hashedPassword);

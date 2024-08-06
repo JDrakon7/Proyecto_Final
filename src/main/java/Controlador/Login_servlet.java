@@ -13,20 +13,14 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/login")  // Anotación que mapea este servlet a la URL /login
 public class Login_servlet extends HttpServlet {
     
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;  // Identificador de versión para la serialización
 
     // Método que maneja las solicitudes POST
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Obtener parámetros de la solicitud
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        
-        if (email == null || email.isEmpty() || password == null || password.isEmpty()) {
-            response.sendRedirect("index.jsp?error=empty_fields");
-            return  ;
-        }
-
+        String email = request.getParameter("email");  // Obtener el email del usuario
+        String password = request.getParameter("password");  // Obtener la contraseña del usuario
 
         // Crear una instancia del DAO_login
         DAO_login daoLogin = new DAO_login();
@@ -35,35 +29,26 @@ public class Login_servlet extends HttpServlet {
 
         if (user != null) {
             // Si el usuario es válido, se crea una sesión y se redirige al usuario a la interfaz
-            HttpSession session = request.getSession();
+            HttpSession session = request.getSession();  // Crear una nueva sesión
             session.setAttribute("email", email);  // Guardar el email en la sesión
             session.setAttribute("role", user.getRole());  // Guardar el rol en la sesión
             session.setAttribute("userId", user.getUserId());  // Guardar el user_id en la sesión
             session.setAttribute("nombre", user.getUsername());  // Guardar el nombre del usuario en la sesión
             response.sendRedirect("interfaz.jsp");  // Redirigir a la interfaz principal
-            
-            
-            
         } else {
             // Si la validación falla, se redirige al usuario a la página de inicio con un error
-             response.sendRedirect("index.jsp?error=invalid_credentials");
-             response.sendRedirect("index.jsp");
-     
-            
-            
+            response.sendRedirect("index.jsp?error=invalid_credentials");  // Redirigir a la página de inicio con un mensaje de error
         }
     }
     
     // Método que maneja las solicitudes GET para cierre de sesión
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action");
-        if ("logout".equals(action)) {
-            HttpSession session = request.getSession();
-            session.invalidate(); // Invalidar la sesión
-            response.sendRedirect("index.jsp"); // Redirigir a la página de inicio de sesión
-            
+        String action = request.getParameter("action");  // Obtener la acción de la solicitud
+        if ("logout".equals(action)) {  // Verificar si la acción es de cierre de sesión
+            HttpSession session = request.getSession();  // Obtener la sesión actual
+            session.invalidate();  // Invalidar la sesión
+            response.sendRedirect("index.jsp");  // Redirigir a la página de inicio de sesión
         }
     }
 }
-    
