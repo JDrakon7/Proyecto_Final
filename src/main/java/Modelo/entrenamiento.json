@@ -53,5 +53,110 @@
       "question": "¿Cómo se realiza la entrada y salida de datos en Python?",
       "answer": "En Python, la entrada de datos se realiza utilizando la función 'input' para obtener datos del usuario, y la salida de datos se realiza utilizando la función 'print' para mostrar resultados en la consola."
     }
+        ,
+  {
+      "question": "¿Qué es Flask y para qué se utiliza?",
+      "alternatives": ["¿Qué es Flask?", "Flask para qué sirve", "¿Para qué se usa Flask?", "Uso de Flask"],
+      "answer": "Flask es un microframework para Python que se utiliza para desarrollar aplicaciones web. Es ligero, flexible y permite construir aplicaciones web de forma rápida y sencilla, proporcionando las herramientas básicas para enrutamiento, manejo de sesiones, y renderización de plantillas."
+  },
+  {
+      "question": "¿Cómo se configuran las rutas en una aplicación Flask?",
+      "alternatives": ["Configurar rutas en Flask", "¿Cómo se definen rutas en Flask?", "Rutas en Flask", "Definir rutas en Flask"],
+      "answer": "En Flask, las rutas se configuran utilizando decoradores como @app.route. Puedes definir una ruta específica para una función que maneje las solicitudes a esa ruta. Por ejemplo: @app.route('/home') def home(): return 'Welcome to Home!'."
+  },
+  {
+      "question": "¿Cómo se maneja la entrada de datos en Flask a través de solicitudes POST?",
+      "alternatives": ["Manejo de datos POST en Flask", "¿Cómo manejar solicitudes POST en Flask?", "Entrada de datos POST Flask", "Solicitud POST en Flask"],
+      "answer": "En Flask, puedes manejar datos de solicitudes POST utilizando request.form para datos del formulario o request.json para datos en formato JSON. Por ejemplo: data = request.form['key'] para datos de formulario o data = request.json.get('key') para datos JSON."
+  },
+  {
+      "question": "¿Qué es un `Blueprint` en Flask y cómo se usa?",
+      "alternatives": ["¿Qué es Blueprint en Flask?", "Uso de Blueprint en Flask", "Blueprint en Flask", "Definir Blueprint en Flask"],
+      "answer": "Un `Blueprint` en Flask es una forma de organizar las rutas y otras funcionalidades de una aplicación Flask en componentes reutilizables. Permite dividir la aplicación en módulos, facilitando su desarrollo y mantenimiento. Se usa registrando el blueprint en la aplicación principal con app.register_blueprint(blueprint)."
+  },
 
+
+
+  
+  {
+      "question": "¿Qué función cumple `get_close_matches` en la biblioteca `difflib`?",
+      "alternatives": ["Función de get_close_matches", "¿Qué hace get_close_matches?", "Uso de get_close_matches", "Funcionamiento de get_close_matches"],
+      "answer": "`get_close_matches` en `difflib` encuentra las coincidencias más cercanas entre una cadena de texto dada y una lista de cadenas. Permite ajustar el nivel de similitud con el parámetro `cutoff` para determinar qué tan cercana debe ser una coincidencia."
+  },
+  {
+      "question": "¿Cómo puedes ajustar la sensibilidad de las coincidencias con `get_close_matches`?",
+      "alternatives": ["Ajustar sensibilidad get_close_matches", "¿Cómo cambiar la sensibilidad en get_close_matches?", "Sensibilidad de coincidencias", "Modificar cutoff en get_close_matches"],
+      "answer": "Puedes ajustar la sensibilidad de las coincidencias en `get_close_matches` modificando el parámetro `cutoff`. Un valor más alto (cercano a 1.0) requiere coincidencias más precisas, mientras que un valor más bajo permite coincidencias más amplias. Por ejemplo: get_close_matches(word, word_list, cutoff=0.6)."
+  },
+  {
+      "question": "¿Cómo se compara la similitud entre dos cadenas utilizando `difflib`?",
+      "alternatives": ["Comparar cadenas con difflib", "Similitud entre cadenas en difflib", "¿Cómo comparar cadenas en difflib?", "Uso de difflib para comparar cadenas"],
+      "answer": "Puedes comparar la similitud entre dos cadenas utilizando la función `SequenceMatcher` de `difflib`. Esta función proporciona un ratio de similitud entre 0 y 1, donde 1 significa cadenas idénticas. Ejemplo: SequenceMatcher(None, string1, string2).ratio()."
+  },
+  {
+      "question": "¿Qué es `SequenceMatcher` en `difflib` y cómo se usa?",
+      "alternatives": ["¿Qué es SequenceMatcher en difflib?", "Uso de SequenceMatcher en difflib", "SequenceMatcher en difflib", "Definir SequenceMatcher en difflib"],
+      "answer": "`SequenceMatcher` en `difflib` es una clase que se utiliza para comparar pares de secuencias. Permite medir la similitud entre dos cadenas y encontrar la mejor coincidencia. Se usa creando una instancia de `SequenceMatcher` con dos secuencias y llamando al método `ratio()` para obtener un valor de similitud."
+  },
+
+
+
+  {
+    "question": "¿Qué es Flask y cuales son sus funciones?",
+    
+    "answer": "Flask es un marco de trabajo para crear aplicaciones web en Python. Es útil porque es sencillo y flexible, permitiendo a los desarrolladores construir aplicaciones web de forma rápida y fácil, con solo las características esenciales que necesitan."
+},
+{
+    "question": "¿Como manejar solicitud de usuarios con flask?",
+    
+    "answer": "Flask te ayuda a manejar solicitudes de usuarios mediante el uso de rutas y controladores. Puedes definir rutas para diferentes URLs y asociarlas con funciones que responden a esas solicitudes, permitiendo personalizar cómo se manejan las interacciones de los usuarios con tu aplicación."
+},
+{
+    "question": "¿Qué es `get_close_matches` y cómo puede ayudar en una aplicación que necesita encontrar coincidencias de texto?",
+   
+    "answer": "`get_close_matches` es una función que encuentra coincidencias similares entre cadenas de texto. Es útil en aplicaciones que necesitan buscar o sugerir respuestas relacionadas con una entrada de usuario, como en un chatbot que busca respuestas similares a la pregunta del usuario."
+},
+{
+    "question": "¿Por qué es importante ajustar el parámetro `cutoff` en la función `get_close_matches`?",
+    
+    "answer": "El parámetro `cutoff` ajusta qué tan similares deben ser las cadenas para ser consideradas coincidencias. Es importante para controlar la precisión de las coincidencias y evitar resultados que no sean relevantes. Un `cutoff` más alto requiere coincidencias más precisas."
+},
+{
+    "question": "¿Qué tipo de problemas puedes resolver usando `SequenceMatcher` de `difflib`?",
+    
+    "answer": "`SequenceMatcher` puede ayudar a resolver problemas de comparación de cadenas, como encontrar similitudes entre dos textos o verificar cómo se parecen dos secuencias. Es útil para tareas como búsqueda de texto, corrección automática y coincidencias aproximadas."
+},
+{
+    "question": "¿Cómo puede ayudar Flask en el desarrollo de una interfaz de usuario simple?",
+    
+    "answer": "Flask permite desarrollar una interfaz de usuario simple utilizando plantillas HTML. Puedes definir cómo se verá la interfaz y qué datos se mostrarán mediante el uso de Jinja2, el motor de plantillas integrado en Flask, lo que facilita la creación de páginas web dinámicas."
+},
+{
+    "question": "¿Cómo puede `get_close_matches` mejorar la experiencia del usuario en una aplicación de búsqueda?",
+    
+    "answer": "`get_close_matches` puede mejorar la experiencia del usuario en una aplicación de búsqueda al ofrecer coincidencias aproximadas cuando no se encuentra una coincidencia exacta. Esto ayuda a los usuarios a encontrar lo que buscan incluso si no escriben la búsqueda de manera exacta."
+},
+{
+    "question": "¿Qué aspectos consideras al usar Flask para una aplicación web pequeña?",
+   
+    "answer": "Al usar Flask para una aplicación web pequeña, debes considerar la simplicidad y flexibilidad del marco, la facilidad de configuración y cómo se ajusta a tus necesidades sin agregar complejidad innecesaria. Flask es ideal para proyectos pequeños debido a su naturaleza minimalista."
+},
+{
+    "question": "¿Cómo puede `SequenceMatcher` ser útil en un sistema de recomendaciones?",
+    
+    "answer": "`SequenceMatcher` puede ser útil en un sistema de recomendaciones al comparar las preferencias de los usuarios con productos o servicios. Puede ayudar a encontrar elementos similares o recomendaciones basadas en la similitud de texto o preferencias."
+},
+{
+    "question": "¿Qué ventajas ofrece Flask al trabajar con datos de formularios en una aplicación web?",
+    "alternatives": ["Ventajas de Flask con formularios", "¿Cómo maneja Flask los formularios?", "Uso de formularios en Flask", "Beneficios de Flask para formularios"],
+    "answer": "Flask ofrece ventajas al trabajar con datos de formularios al proporcionar herramientas simples para recoger y procesar datos. Puedes utilizar `request.form` para acceder a los datos del formulario y manejarlos de manera eficiente, lo que facilita la interacción con los usuarios."
+},
+{
+    "question": "¿Cómo puedes utilizar `get_close_matches` para mejorar la precisión de las respuestas en un chatbot?",
+    "alternatives": ["Mejorar respuestas con `get_close_matches`", "Uso de `get_close_matches` en chatbots", "¿Cómo ayuda `get_close_matches` en chatbots?", "Precisión en chatbot con `get_close_matches`"],
+    "answer": "`get_close_matches` puede mejorar la precisión de las respuestas en un chatbot al ayudar a encontrar las respuestas más relevantes entre una lista de posibles respuestas. Ajustando el parámetro `cutoff`, puedes controlar qué tan similar debe ser la entrada del usuario a las respuestas disponibles."
+}
 ]
+
+
+

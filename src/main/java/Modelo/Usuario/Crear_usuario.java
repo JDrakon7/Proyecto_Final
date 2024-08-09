@@ -1,7 +1,6 @@
 package Modelo.Usuario;
 
 import Modelo.Conexiondb;
-import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,7 +33,6 @@ public class Crear_usuario {
                 psUsuario.setInt(4, rol);
                 psUsuario.executeUpdate();
                 
-               
                 // Obtener el ID generado del usuario
                 try (ResultSet rs = psUsuario.getGeneratedKeys()) {
                     if (rs.next()) {
@@ -42,11 +40,9 @@ public class Crear_usuario {
 
                         try (PreparedStatement psLogin = cx.prepareStatement(sqlLogin)) {
                             // Establecer los parámetros para insertar en tb_login
-                             // Encriptar la contraseña usando BCrypt   
-                            String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
                             psLogin.setInt(1, idUsuario);
                             psLogin.setString(2, email);
-                            psLogin.setString(3, hashedPassword);
+                            psLogin.setString(3, password); // Almacenar la contraseña sin encriptar
                             psLogin.executeUpdate();
                         }
                     }
@@ -74,5 +70,4 @@ public class Crear_usuario {
         }
     }
 }
-
 

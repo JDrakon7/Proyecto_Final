@@ -45,10 +45,13 @@ public class Login_servlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");  // Obtener la acción de la solicitud
-        if ("logout".equals(action)) {  // Verificar si la acción es de cierre de sesión
-            HttpSession session = request.getSession();  // Obtener la sesión actual
-            session.invalidate();  // Invalidar la sesión
-            response.sendRedirect("index.jsp");  // Redirigir a la página de inicio de sesión
+       if ("logout".equals(action)) {
+            HttpSession session = request.getSession();
+            session.invalidate(); // Invalidar la sesión
+            response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+            response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+            response.setDateHeader("Expires", 0); // Proxies.
+            response.sendRedirect("index.jsp"); // Redirigir a la página de inicio de sesión
         }
     }
 }

@@ -10,6 +10,7 @@
 <%@ page import="javax.servlet.http.*, javax.servlet.*" %>
 
 
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -22,6 +23,17 @@
 </head>
 
 <body>
+   <%
+    // Verificar si el usuario está autenticado
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    // Configurar las cabeceras de no caché
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    response.setDateHeader("Expires", 0); // Proxies.
+%>
   <nav class="navbar">
     <img src="icono.png" class="navbar-logo" alt="logo" />
     <ul class="navbar-list">
@@ -44,7 +56,9 @@
 
       <ul class="profile-dropdown-list">
         <li class="profile-dropdown-list-item"><a href="./perfil.jsp"><i class="fa-regular fa-user"></i> Editar Perfil</a></li>
-        <li class="profile-dropdown-list-item"><a href="configuracion.jsp"><i class="fa-solid fa-sliders"></i>Configuracion</a></li>
+        <c:if test="${sessionScope.role == 'superadmin'}">
+        <li class="profile-dropdown-list-item"><a href="users.jsp"><i class="fa-solid fa-sliders"></i>Configuracion</a></li>
+         </c:if>
         <li class="profile-dropdown-list-item"><a href="./ayuda-soporte.jsp"><i class="fa-regular fa-circle-question"></i> Ayuda y Soporte</a></li>
         <hr />
         <li class="profile-dropdown-list-item" id="logout-link"><a href="#" onclick="logout();"><i class="fa-solid fa-arrow-right-from-bracket"></i> Cerrar sesión</a></li>
@@ -68,7 +82,15 @@
     </div>
   </div>
   <script src="js/main.js"></script>
-  <script type="text/javascript">
+ 
+  
+  <script> 
+      
+     // Guarda el userId en localStorage cuando el usuario inicia sesión
+    const userId = '<%= session.getAttribute("userId") %>';  // Asegúrate de que este valor esté disponible
+    localStorage.setItem('userId', userId);
+      
+// Prevenir que el usuario pueda volver a la página anterior
     (function(global) {
         if (typeof(global) === "undefined") {
             throw new Error("Ventana no disponible");
@@ -78,7 +100,6 @@
         var noBackPlease = function() {
             global.location.href += "#";
 
-      
             global.setTimeout(function() {
                 global.location.href += "!";
             }, 50);
@@ -98,12 +119,54 @@
                 if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
                     e.preventDefault();
                 }
-      
                 e.stopPropagation();
             };
         };
     })(window);
-</script>
 
+    // Función para cerrar sesión y evitar volver atrás
+    function logout() {
+        // Invalida la sesión en el servidor
+        fetch('login?action=logout', {
+            method: 'GET',
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;  // Redirigir a la página de inicio de sesión
+            }
+        });
+
+        // Manipula el historial del navegador para prevenir regresar a la página anterior
+        (function(global) {
+            if (typeof(global) === "undefined") {
+                throw new Error("Ventana no disponible");
+            }
+            
+            var _hash = "!";
+            global.location.href += "#";
+
+            global.setTimeout(function() {
+                global.location.href += "!";
+            }, 50);
+
+            global.onhashchange = function() {
+                if (global.location.hash !== _hash) {
+                    global.location.hash = _hash;
+                }
+            };
+
+            global.onload = function() {
+                document.body.onkeydown = function(e) {
+                    var elm = e.target.nodeName.toLowerCase();
+                    if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                        e.preventDefault();
+                    }
+                    e.stopPropagation();
+                };
+            };
+        })(window);
+    }
+   </script> 
 </body>
 </html>

@@ -53,12 +53,14 @@
             </div>
         </div>
     </body>
-    <script>    
-            function confirmSubmission() {
+    <script>
+        function confirmSubmission() {
             return confirm("¿Los datos de creacion de cuenta son correctos?");
         }
 
         function showAlert(message) {
             alert(message);
-        }</script>
+        }
+
+    </script>
 </html>

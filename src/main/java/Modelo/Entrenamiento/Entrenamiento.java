@@ -4,7 +4,7 @@
  */
 package Modelo.Entrenamiento;
 
-import java.sql.Timestamp;
+import java.sql.Timestamp; // Importación para manejar el tipo de datos Timestamp, que representa una marca de tiempo
 
 /**
  *
@@ -12,59 +12,72 @@ import java.sql.Timestamp;
  */
 public class Entrenamiento {
 
-        private int idEntrenamiento;
-        private String pregunta;
-        private String respuesta;
-        private int idCategoria;
-        private int idUsuario;
-        private Timestamp fechaActualizacion;
+    // Declaración de atributos privados de la clase
+    private int idEntrenamiento;          // ID único para cada entrenamiento
+    private String pregunta;              // Texto de la pregunta del entrenamiento
+    private String respuesta;             // Texto de la respuesta correspondiente a la pregunta
+    private int idCategoria;              // ID de la categoría a la que pertenece el entrenamiento
+    private int idUsuario;                // ID del usuario que creó o modificó el entrenamiento
+    private Timestamp fechaActualizacion; // Marca de tiempo de la última actualización del entrenamiento
+    private String nombreCategoria;       // Nombre de la categoría a la que pertenece el entrenamiento (puede ser redundante con idCategoria, pero útil para mostrar en interfaces)
 
-        public int getIdEntrenamiento() {
-            return idEntrenamiento;
-        }
+    // Métodos getter y setter para cada atributo
+    // Los getters obtienen el valor de un atributo específico
+    // Los setters asignan un valor a un atributo específico
 
-        public void setIdEntrenamiento(int idEntrenamiento) {
-            this.idEntrenamiento = idEntrenamiento;
-        }
+    public int getIdEntrenamiento() {
+        return idEntrenamiento;
+    }
 
-        public String getPregunta() {
-            return pregunta;
-        }
+    public void setIdEntrenamiento(int idEntrenamiento) {
+        this.idEntrenamiento = idEntrenamiento;
+    }
 
-        public void setPregunta(String pregunta) {
-            this.pregunta = pregunta;
-        }
+    public String getPregunta() {
+        return pregunta;
+    }
 
-        public String getRespuesta() {
-            return respuesta;
-        }
+    public void setPregunta(String pregunta) {
+        this.pregunta = pregunta;
+    }
 
-        public void setRespuesta(String respuesta) {
-            this.respuesta = respuesta;
-        }
+    public String getRespuesta() {
+        return respuesta;
+    }
 
-        public int getIdCategoria() {
-            return idCategoria;
-        }
+    public void setRespuesta(String respuesta) {
+        this.respuesta = respuesta;
+    }
 
-        public void setIdCategoria(int idCategoria) {
-            this.idCategoria = idCategoria;
-        }
+    public int getIdCategoria() {
+        return idCategoria;
+    }
 
-        public int getIdUsuario() {
-            return idUsuario;
-        }
+    public void setIdCategoria(int idCategoria) {
+        this.idCategoria = idCategoria;
+    }
 
-        public void setIdUsuario(int idUsuario) {
-            this.idUsuario = idUsuario;
-        }
+    public int getIdUsuario() {
+        return idUsuario;
+    }
 
-        public Timestamp getFechaActualizacion() {
-            return fechaActualizacion;
-        }
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
 
-        public void setFechaActualizacion(Timestamp fechaActualizacion) {
-            this.fechaActualizacion = fechaActualizacion;
-        }
-  }
+    public Timestamp getFechaActualizacion() {
+        return fechaActualizacion;
+    }
 
+    public void setFechaActualizacion(Timestamp fechaActualizacion) {
+        this.fechaActualizacion = fechaActualizacion;
+    }
+
+    public String getNombreCategoria() {
+        return nombreCategoria;
+    }
+
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
+    }
+}

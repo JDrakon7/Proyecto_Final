@@ -157,3 +157,8 @@ body {
 .edit-form button[type="button"]:last-child:hover {
     background-color: #d32f2f;
 }
+
+.edit-form select:focus {
+    border-color: #4caf50;
+    outline: none;
+}

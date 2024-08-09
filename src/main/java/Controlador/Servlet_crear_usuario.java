@@ -1,65 +1,61 @@
 package Controlador;
 
-import Modelo.Usuario.Crear_usuario;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
+import Modelo.Usuario.Crear_usuario;  // Importa la clase Crear_usuario que maneja la lógica de creación de usuarios
+import java.io.IOException;  // Importa la clase IOException para manejar errores de entrada/salida
+import javax.servlet.ServletException;  // Importa la clase ServletException para manejar errores específicos de servlets
+import javax.servlet.annotation.WebServlet;  // Importa la anotación WebServlet para definir el servlet
+import javax.servlet.http.HttpServlet;  // Importa la clase HttpServlet para la funcionalidad del servlet
+import javax.servlet.http.HttpServletRequest;  // Importa la clase HttpServletRequest para manejar solicitudes HTTP
+import javax.servlet.http.HttpServletResponse;  // Importa la clase HttpServletResponse para manejar respuestas HTTP
 
-@WebServlet("/crear_usuario")  // Anotación que mapea este servlet a la URL /crear_usuario
+@WebServlet("/crear_usuario")  // Define el URL pattern para el servlet. Este servlet se accede mediante la URL "/crear_usuario"
 public class Servlet_crear_usuario extends HttpServlet {
 
-    // Método que maneja las solicitudes POST
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Obtener los parámetros de la solicitud
-        String nombre = request.getParameter("nombre");
-        String email = request.getParameter("email");
-        String confirmarEmail = request.getParameter("confirmar_email");
-        String password = request.getParameter("password");
-        String confirmarPassword = request.getParameter("confirmar_password");
+        // Método que maneja las solicitudes HTTP POST para crear un nuevo usuario
 
-        // Verificar que los emails coinciden
+        // Obtiene parámetros del formulario
+        String nombre = request.getParameter("nombre");  // Obtiene el nombre del usuario desde la solicitud
+        String email = request.getParameter("email");  // Obtiene el email del usuario desde la solicitud
+        String confirmarEmail = request.getParameter("confirmar_email");  // Obtiene la confirmación del email desde la solicitud
+        String password = request.getParameter("password");  // Obtiene la contraseña del usuario desde la solicitud
+        String confirmarPassword = request.getParameter("confirmar_password");  // Obtiene la confirmación de la contraseña desde la solicitud
+
+        // Verifica si los emails coinciden
         if (!email.equals(confirmarEmail)) {
-            response.sendRedirect("email_mismatch");
+            // Redirige a index.jsp con un mensaje si los emails no coinciden
+            response.sendRedirect("index.jsp?message=email_mismatch");
             return;
         }
 
-        // Verificar que las contraseñas coinciden
+        // Verifica si las contraseñas coinciden
         if (!password.equals(confirmarPassword)) {
-            response.sendRedirect("password_mismatch");
+            // Redirige a index.jsp con un mensaje si las contraseñas no coinciden
+            response.sendRedirect("index.jsp?message=password_mismatch");
             return;
         }
 
-        // Fecha de registro actual (puede ser obtenida del sistema)
-        String fechaRegistro = java.time.LocalDate.now().toString();
-        // Asignar un rol por defecto (puede ser cambiado según la lógica de la aplicación)
-        String rol = "1";  // rol de usuario
+        // Configura datos adicionales para el nuevo usuario
+        String fechaRegistro = java.time.LocalDate.now().toString();  // Obtiene la fecha actual en formato String
+        String rol = "1";  // Asigna el rol de usuario. Puedes cambiar esto según tus necesidades
 
-        // Crear una instancia de Crear_usuario para interactuar con la base de datos
+        // Crea una instancia de Crear_usuario y llama al método para crear el usuario
         Crear_usuario crearUsuario = new Crear_usuario();
-
-        // Llamar al método para crear un usuario
         boolean isUserCreated = crearUsuario.crearUsuario(nombre, email, fechaRegistro, password, Integer.parseInt(rol));
 
-        // Depuración: imprimir en consola el resultado de la creación del usuario
-        System.out.println("Usuario creado: " + isUserCreated);
-
-        // Redirigir a una página de éxito o la lista de usuarios
         if (isUserCreated) {
-            response.sendRedirect("success");
+            // Envia una respuesta HTML con un script JavaScript que muestra una alerta y redirige a index.jsp
+            response.setContentType("text/html");
+            response.getWriter().write("<html><body>");
+            response.getWriter().write("<script type='text/javascript'>");
+            response.getWriter().write("alert('Cuenta creada exitosamente.');");
+            response.getWriter().write("window.location.href = 'index.jsp';");
+            response.getWriter().write("</script>");
+            response.getWriter().write("</body></html>");
         } else {
-            response.sendRedirect("creation_failed");
+            // Redirige a index.jsp con un mensaje si la creación del usuario falla
+            response.sendRedirect("index.jsp?message=creation_failed");
         }
     }
 }
-
-
-
-         
-            
-    
-    
-

@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 // Función para cargar la información del usuario
 function obtenerInformacionUsuario() {
-    fetch('/UsuarioServlet?action=obtenerInformacionUsuario', {
+    fetch('http://localhost:8080/Proyecto2/UsuarioServlet?action=obtenerInformacionUsuario', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'

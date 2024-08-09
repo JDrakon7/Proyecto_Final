@@ -13,10 +13,21 @@
     <link rel="stylesheet" href="css/entrenamiento.css">
 </head>
 <body>
+       <%
+    // Verificar si el usuario está autenticado
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    // Configurar las cabeceras de no caché
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    response.setDateHeader("Expires", 0); // Proxies.
+%>
     <div class="profile-wrap">
         <div class="profile-html">
             <h2>Entrenar Chatbot</h2>
-            <form id="training-form" action="EntrenamientoServlet" method="post">
+            <form id="training-form" action="AgregarEntrenamiento" method="post">
                 <input type="hidden" name="action" value="agregarEntrenamiento">
                 <div class="group">
                     <label for="pregunta" class="label">Pregunta</label>
@@ -55,7 +66,7 @@
             </div>
         </div>
     </div>
-    <script src="js/entrenamiento.js"></script>
+    <script src="js/entrenar.js"></script>
 </body>
 </html>
 

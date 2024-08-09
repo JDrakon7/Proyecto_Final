@@ -3,7 +3,6 @@
     Created on : 4/07/2024, 9:13:58 a. m.
     Author     : JDBJ
 --%>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.*, javax.servlet.*, javax.servlet.http.*" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -15,6 +14,17 @@
         <link rel="stylesheet" type="text/css" href="css/historial.css">
     </head>
     <body>
+           <%
+    // Verificar si el usuario está autenticado
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    // Configurar las cabeceras de no caché
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    response.setDateHeader("Expires", 0); // Proxies.
+%>
         <div class="history-wrap">
             <div class="history-html">
                 <h2>Historial de Conversaciones</h2>

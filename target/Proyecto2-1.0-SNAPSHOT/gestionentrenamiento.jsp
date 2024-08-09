@@ -14,6 +14,17 @@
     <link rel="stylesheet" href="css/gestionentreno.css">
 </head>
 <body>
+       <%
+    // Verificar si el usuario está autenticado
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("index.jsp");
+        return;
+    }
+    // Configurar las cabeceras de no caché
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+    response.setDateHeader("Expires", 0); // Proxies.
+%>
     <div class="content-wrap">
         <div class="content-html">
             <h2>Gestión de Entrenamientos</h2>
@@ -39,13 +50,14 @@
         </div>
         <div>
             <label for="edit-categoria">Categoría:</label>
-            <input type="text" id="edit-categoria">
+           <select id="edit-categoria" class="edit-form-select"></select>
+            
         </div>
         <button type="button" onclick="guardarEntrenamiento()">Guardar</button>
         <button type="button" onclick="cancelarEdicion()">Cancelar</button>
     </form>
 </div>
  </div>
-    <script src="js/gestionentreno.js"></script>
+    <script src="js/gestionar.js"></script>
 </body>
 </html>

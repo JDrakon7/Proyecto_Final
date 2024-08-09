@@ -13,19 +13,23 @@ public class Usuario_update {
      public Usuario_update() {
         this.conexion = new Conexiondb();
     }
-    public void actualizarUsuario(int id, String nombre, String email, String fechaRegistro, String rol) {
+ public boolean ActualizarPerfil(int userId, String username, String email, String password) {
         Connection cx = conexion.Conectar();
-        String sql = "UPDATE tb_usuario SET nombre = ?, email = ?, fecha_registro = ?, rol = ? WHERE id_usuario = ?";
+        String sql = "UPDATE tb_usuario SET username = ?, email = ?, password = ? WHERE id_usuario = ?";
+        
         try (PreparedStatement pstmt = cx.prepareStatement(sql)) {
-            pstmt.setString(1, nombre);
+            pstmt.setString(1, username);
             pstmt.setString(2, email);
-            pstmt.setString(3, fechaRegistro);
-            pstmt.setString(4, rol);
-            pstmt.setInt(5, id);
+            pstmt.setString(3, password); 
+            pstmt.setInt(4, userId);
             pstmt.executeUpdate();
-            System.out.println("Usuario actualizado exitosamente");
+            System.out.println("Perfil actualizado exitosamente");
+            return true;
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            System.out.println("Error al actualizar el perfil: " + e.getMessage());
+            return false;
+        } finally {
+            conexion.desconectar();
         }
     }
 }

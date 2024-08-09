@@ -86,13 +86,26 @@ const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "http://localhost:5000/chatbot";
     const pElement = document.createElement("p");
 
+    // Obtén el userId desde localStorage
+    const userId = localStorage.getItem('userId');  // Asegúrate de que este valor esté disponible
+
+    if (!userId) {
+        console.error("userId no encontrado en localStorage");
+        pElement.textContent = "Error: userId no encontrado.";
+        incomingChatDiv.querySelector(".typing-animation").remove();
+        incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
+        return;
+    }
+
+    // Asume que userText está definido en el contexto de la función
     const requestOptions = {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            question: userText
+            question: userText,
+            userId: userId  // Incluye el ID del usuario en la solicitud
         })
     }
 
@@ -101,7 +114,7 @@ const getChatResponse = async (incomingChatDiv) => {
         pElement.textContent = response.answer;
     } catch (error) {
         pElement.classList.add("error");
-        pElement.textContent = "Ocurrio un error a la hora de generar una respuesta intentelo nuevamente.";
+        pElement.textContent = "Ocurrió un error a la hora de generar una respuesta, intentelo nuevamente.";
     }
 
     incomingChatDiv.querySelector(".typing-animation").remove();
@@ -110,12 +123,7 @@ const getChatResponse = async (incomingChatDiv) => {
     chatContainer.scrollTo(0, chatContainer.scrollHeight);
 }
 
-const copyResponse = (copyBtn) => {
-    const reponseTextElement = copyBtn.parentElement.querySelector("p");
-    navigator.clipboard.writeText(reponseTextElement.textContent);
-    copyBtn.textContent = "done";
-    setTimeout(() => copyBtn.textContent = "content_copy", 1000);
-}
+
 
 const showTypingAnimation = () => {
     const html = `<div class="chat-content">
@@ -267,3 +275,83 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+//////////////////////////logout/////////////////////////
+
+
+      // Prevenir que el usuario pueda volver a la página anterior
+    (function(global) {
+        if (typeof(global) === "undefined") {
+            throw new Error("Ventana no disponible");
+        }
+        
+        var _hash = "!";
+        var noBackPlease = function() {
+            global.location.href += "#";
+
+            global.setTimeout(function() {
+                global.location.href += "!";
+            }, 50);
+        };
+
+        global.onhashchange = function() {
+            if (global.location.hash !== _hash) {
+                global.location.hash = _hash;
+            }
+        };
+
+        global.onload = function() {
+            noBackPlease();
+
+            document.body.onkeydown = function(e) {
+                var elm = e.target.nodeName.toLowerCase();
+                if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                    e.preventDefault();
+                }
+                e.stopPropagation();
+            };
+        };
+    })(window);
+
+    // Función para cerrar sesión y evitar volver atrás
+    function logout() {
+        // Invalida la sesión en el servidor
+        fetch('login?action=logout', {
+            method: 'GET',
+            credentials: 'same-origin'
+        })
+        .then(response => {
+            if (response.redirected) {
+                window.location.href = response.url;  // Redirigir a la página de inicio de sesión
+            }
+        });
+
+        // Manipula el historial del navegador para prevenir regresar a la página anterior
+        (function(global) {
+            if (typeof(global) === "undefined") {
+                throw new Error("Ventana no disponible");
+            }
+            
+            var _hash = "!";
+            global.location.href += "#";
+
+            global.setTimeout(function() {
+                global.location.href += "!";
+            }, 50);
+
+            global.onhashchange = function() {
+                if (global.location.hash !== _hash) {
+                    global.location.hash = _hash;
+                }
+            };
+
+            global.onload = function() {
+                document.body.onkeydown = function(e) {
+                    var elm = e.target.nodeName.toLowerCase();
+                    if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
+                        e.preventDefault();
+                    }
+                    e.stopPropagation();
+                };
+            };
+        })(window);
+    }
