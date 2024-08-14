@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let form = document.getElementById('login-form');
     if (form) {
         form.addEventListener('submit', function(event) {
-            var email = document.getElementById('user').value.trim();
-            var password = document.getElementById('pass').value.trim();
+            let email = document.getElementById('user').value.trim();
+            let password = document.getElementById('pass').value.trim();
             if (!email || !password) {
                 alert('Por favor, complete todos los campos.');
                 event.preventDefault();
