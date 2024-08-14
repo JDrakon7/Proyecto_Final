@@ -3,6 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
+
+
+// Editar entrenamiento
+function editarEntrenamiento(id, pregunta, respuesta, categoria) {
+    document.getElementById('edit-id').value = id;
+    document.getElementById('edit-pregunta').value = pregunta;
+    document.getElementById('edit-respuesta').value = respuesta;
+    document.getElementById('edit-categoria').value = categoria; // Aquí se estaba estableciendo el nombre de la categoría, no el ID
+    document.getElementById('edit-form').style.display = 'block';
+}
+
+
 // Cargar entrenamientos
 function cargarEntrenamientos() {
     fetch('http://localhost:8080/Proyecto2/LeerEntrenamiento', {
@@ -43,14 +55,8 @@ function cargarEntrenamientos() {
             .catch(error => console.error('Error al cargar los entrenamientos:', error));
 }
 
-// Editar entrenamiento
-function editarEntrenamiento(id, pregunta, respuesta, categoria) {
-    document.getElementById('edit-id').value = id;
-    document.getElementById('edit-pregunta').value = pregunta;
-    document.getElementById('edit-respuesta').value = respuesta;
-    document.getElementById('edit-categoria').value = categoria; // Aquí se estaba estableciendo el nombre de la categoría, no el ID
-    document.getElementById('edit-form').style.display = 'block';
-}
+
+
 
 // Guardar entrenamiento editado
 function guardarEntrenamiento() {
@@ -114,18 +120,18 @@ window.addEventListener('DOMContentLoaded', (event) => {
 // Eliminar entrenamiento
 function eliminarEntrenamiento(id) {
     if (confirm('¿Estás seguro de que deseas eliminar este entrenamiento?')) {
-        fetch('http://localhost:8080/Proyecto2/ServletEliminarEntrenamiento', { 
+        fetch('http://localhost:8080/Proyecto2/ServletEliminarEntrenamiento', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded ; charset=UTF-8'
             },
             body: `idEntrenamiento=${encodeURIComponent(id)}`
         })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);
-            cargarEntrenamientos();
-        })
-        .catch(error => console.error('Error al eliminar el entrenamiento:', error));
+                .then(response => response.text())
+                .then(data => {
+                    alert(data);
+                    cargarEntrenamientos();
+                })
+                .catch(error => console.error('Error al eliminar el entrenamiento:', error));
     }
 }
