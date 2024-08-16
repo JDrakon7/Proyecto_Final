@@ -1,6 +1,6 @@
 <%-- 
 Document   : index
-Created on : 25/04/2024, 1:49:11 p. m.
+Created on : 25/04/2024, 1:49:11 p.m.
 Author     : JDBJ
 --%>
 
@@ -19,15 +19,15 @@ Author     : JDBJ
                     <div class="img">
                     <img class="header__icon" src="icono.png" alt="Icono del sitio web">
                 </div>
-                    <h1 class="login-title">Iniciar Sesión</h1>
-                    <form action="login" method="POST" class="login-form">
+                <div class="login-form">
+                    <form action="login" method="POST">
                         <div class="group">
                             <label for="user" class="label">Usuario</label>
-                            <input id="user" type="text" class="input" name="email" required>
+                            <input id="user" type="text" class="input" name="email">
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" name="password" required>
+                            <input id="pass" type="password" class="input" name="password">
                         </div>
                         <div class="group">
                             <input type="submit" class="button" value="Ingresar">
@@ -37,15 +37,16 @@ Author     : JDBJ
                             <a href="./password.jsp">¿Olvidó su contraseña?</a>
                         </div>
                         <div class="foot-lnk">
-                            <a href="registro.jsp">¿No tienes cuenta? Regístrate aquí</a>
+                            <a href="registro.jsp">¿No tienes cuenta? Regístrate aquí?</a>
                         </div>
                     </form>
+                </div>
                 </article>
             </section>
         </main>
         <footer>
             <p>&copy; 2024 Proyecto Masterbot.</p>
         </footer>
-        <script src="js/login.js"></script>
+        <script src="js/login.js" type="module"></script>
     </body>
 </html>

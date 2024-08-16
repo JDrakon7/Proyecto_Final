@@ -3,8 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
+
+import { validar_campos } from './validar_campos';
+
 document.addEventListener('DOMContentLoaded', function() {
-    let form = document.getElementById('login-form');
+    validarCampos('login-form');
     if (form) {
         form.addEventListener('submit', function(event) {
             let email = document.getElementById('user').value.trim();
