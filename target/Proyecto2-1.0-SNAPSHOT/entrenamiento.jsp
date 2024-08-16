@@ -31,21 +31,21 @@
                 <input type="hidden" name="action" value="agregarEntrenamiento">
                 <div class="group">
                     <label for="pregunta" class="label">Pregunta</label>
-                    <input id="pregunta" type="text" class="input" name="pregunta" required>
+                    <input id="pregunta" type="text" class="input" name="pregunta">
                 </div>
                 <div class="group">
                     <label for="respuesta" class="label">Respuesta</label>
-                    <textarea id="respuesta" class="input" name="respuesta" rows="4" required></textarea>
+                    <textarea id="respuesta" class="input" name="respuesta" rows="4"></textarea>
                 </div>
                 <div class="group">
                     <label for="categoria" class="label">Categoria</label>
-                    <select id="categoria" name="categoria" class="input" required>
+                    <select id="categoria" name="categoria" class="input">
                         <option value="">Selecciona una categoria</option>
                     </select>
                 </div>
                 <div class="group">
                     <label for="palabras_clave" class="label">Palabras Clave</label>
-                    <input id="palabras_clave" type="text" class="input" name="palabras_clave" placeholder="Separadas por comas" required>
+                    <input id="palabras_clave" type="text" class="input" name="palabras_clave" placeholder="Separadas por comas" >
                 </div>
                 <div class="group">
                     <input type="submit" class="button" value="Agregar">

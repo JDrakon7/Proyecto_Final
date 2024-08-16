@@ -311,6 +311,10 @@ document.addEventListener("DOMContentLoaded", function () {
             };
         };
     })(window);
+    
+    
+    
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Función para cerrar sesión y evitar volver atrás
     function logout() {

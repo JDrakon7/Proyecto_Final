@@ -20,7 +20,7 @@ Author     : JDBJ
                     <img class="header__icon" src="icono.png" alt="Icono del sitio web">
                 </div>
                 <div class="login-form">
-                    <form id="form" action="login" method="POST">
+                    <form id="login-form" action="login" method="POST">
                         <div class="group">
                             <label for="user" id="user" class="label">Usuario</label>
                             <input id="user" type="text" class="input" name="email">

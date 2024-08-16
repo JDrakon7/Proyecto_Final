@@ -6,17 +6,17 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-       <%
-    // Verificar si el usuario está autenticado
-    if (session == null || session.getAttribute("email") == null) {
-        response.sendRedirect("index.jsp");
-        return;
-    }
-    // Configurar las cabeceras de no caché
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-    response.setDateHeader("Expires", 0); // Proxies.
-%>
+    <%
+        // Verificar si el usuario está autenticado
+        if (session == null || session.getAttribute("email") == null) {
+            response.sendRedirect("index.jsp");
+            return;
+        }
+        // Configurar las cabeceras de no caché
+        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+        response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+        response.setDateHeader("Expires", 0); // Proxies.
+    %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Actualizar Rol de Usuario</title>
@@ -27,8 +27,8 @@
             <h1>Actualizar Rol de Usuario</h1>
             <form id="roleForm">
                 <div class="form-group">
-                    <label for="userId">ID de Usuario:</label>
-                    <input type="text" id="userId" name="userId" required>
+                    <label for="userId">ID de Usuario / Correo electronico </label>
+                    <input type="text" id="userId" name="userId">
                 </div>
                 <div class="form-group">
                     <label for="role">Nuevo Rol:</label>
@@ -52,6 +52,7 @@
 
                 const userId = document.getElementById('userId').value;
                 const role = document.getElementById('role').value;
+                const email = document.getElementById('correo').value;
 
                 const xhr = new XMLHttpRequest();
                 xhr.open("POST", "actualizarRol", true);

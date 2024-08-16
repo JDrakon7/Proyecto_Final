@@ -10,7 +10,7 @@ function editarEntrenamiento(id, pregunta, respuesta, categoria) {
     document.getElementById('edit-id').value = id;
     document.getElementById('edit-pregunta').value = pregunta;
     document.getElementById('edit-respuesta').value = respuesta;
-    document.getElementById('edit-categoria').value = categoria; // Aquí se estaba estableciendo el nombre de la categoría, no el ID
+    document.getElementById('edit-categoria').value = categoria;
     document.getElementById('edit-form').style.display = 'block';
 }
 
@@ -35,7 +35,7 @@ function cargarEntrenamientos() {
                 data.forEach(entrenamiento => {
                     const pregunta = decodeURIComponent(entrenamiento.pregunta);
                     const respuesta = decodeURIComponent(entrenamiento.respuesta);
-                    const nombreCategoria = decodeURIComponent(entrenamiento.nombreCategoria); // Obtener el nombre de la categoría
+                    const nombreCategoria = decodeURIComponent(entrenamiento.nombreCategoria);
                     const entrenamientoDiv = document.createElement('div');
                     entrenamientoDiv.classList.add('item');
                     entrenamientoDiv.innerHTML = `
@@ -100,8 +100,8 @@ function cargarCategorias() {
                 selectCategoria.innerHTML = '';
                 data.forEach(categoria => {
                     const option = document.createElement('option');
-                    option.value = categoria.idCategoria; // Asegúrate de usar el nombre correcto aquí
-                    option.text = categoria.nombreCategoria; // Y aquí también
+                    option.value = categoria.idCategoria;
+                    option.text = categoria.nombreCategoria; 
                     selectCategoria.appendChild(option);
                 });
             })

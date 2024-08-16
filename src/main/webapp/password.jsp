@@ -14,17 +14,6 @@
     <link rel="stylesheet" href="css/password.css">
 </head>
 <body>
-       <%
-    // Verificar si el usuario está autenticado
-    if (session == null || session.getAttribute("email") == null) {
-        response.sendRedirect("index.jsp");
-        return;
-    }
-    // Configurar las cabeceras de no caché
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-    response.setDateHeader("Expires", 0); // Proxies.
-%>
     <div class="forgot-password-wrap">
         <div class="forgot-password-html">
             <h2 class="title">Recuperar Contraseña</h2>

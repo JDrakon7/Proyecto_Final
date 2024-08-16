@@ -25,14 +25,14 @@ public class Servlet_crear_usuario extends HttpServlet {
         // Verifica si los emails coinciden
         if (!email.equals(confirmarEmail)) {
             // Redirige a index.jsp con un mensaje si los emails no coinciden
-            response.sendRedirect("index.jsp?message=email_mismatch");
+            response.sendRedirect("index.jsp?error=email_mismatch");
             return;
         }
 
         // Verifica si las contraseñas coinciden
         if (!password.equals(confirmarPassword)) {
             // Redirige a index.jsp con un mensaje si las contraseñas no coinciden
-            response.sendRedirect("index.jsp?message=password_mismatch");
+            response.sendRedirect("index.jsp?error=password_mismatch");
             return;
         }
 

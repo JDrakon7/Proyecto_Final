@@ -22,6 +22,9 @@ public class Servlet_Correovalidar extends HttpServlet {  // Define la clase Ser
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  // Maneja las solicitudes POST
+        request.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres para la solicitud
+        response.setContentType("text/html; charset=UTF-8");  // Establece el tipo de contenido de la respuesta
+        response.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres para la respuesta
         String email = request.getParameter("email");  // Obtiene el email del parámetro de la solicitud
         RecuperarContrasena recuperarContrasena = new RecuperarContrasena();  // Crea una instancia de RecuperarContrasena para manejar la validación del correo
 

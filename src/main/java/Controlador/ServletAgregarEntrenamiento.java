@@ -30,6 +30,9 @@ public class ServletAgregarEntrenamiento extends HttpServlet {  // Define la cla
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {  // Maneja las solicitudes POST
         HttpSession session = request.getSession();  // Obtiene la sesión HTTP del usuario
         Integer idUsuario = (Integer) session.getAttribute("userId");  // Obtiene id_usuario de la sesión
+        request.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres para la solicitud
+        response.setContentType("text/html; charset=UTF-8");  // Establece el tipo de contenido de la respuesta
+        response.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres para la respuesta
 
         // Verificar que id_usuario no es nulo
         if (idUsuario == null) {

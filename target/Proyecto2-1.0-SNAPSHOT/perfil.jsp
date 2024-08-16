@@ -30,14 +30,14 @@
         <div class="profile-html">
             <h2>Actualizar Perfil</h2>
             <form id="profile-form" method="POST">
-                <input type="hidden" id="userId" name="userId>
-                <div class="group">
+                <input type= "hidden" id="userId" name="userId">
+                <div class = "group">
                     <label for="username" class="label">Nombre de usuario</label>
-                    <input id="username" type="text" class="input" name="username" required>
+                    <input id="username" type="text" class="input" name="username">
                 </div>
-                <div class="group">
+                <div class= "group">
                     <label for="email" class="label">Email</label>
-                    <input id="email" type="email" class="input" name="email" required>
+                    <input id="email" type="email" class="input" name="email">
                 </div>
                 <div class="group">
                     <label for="password" class="label">Contraseña</label>

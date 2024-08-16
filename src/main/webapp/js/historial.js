@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const loadChatHistory = () => {
-        fetch("http://localhost:8080/Proyecto2/historial", {  
+        fetch("${URL}/${historial}", {  
             method: "GET",
             headers: {
                 "Content-Type": "application/json ; charset=UTF-8"

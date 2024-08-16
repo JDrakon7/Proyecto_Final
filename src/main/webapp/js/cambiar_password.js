@@ -3,27 +3,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('forgot-password-form').addEventListener('submit', function(event) {
-                event.preventDefault();
-                const formData = new FormData(this);
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('forgot-password-form').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const formData = new FormData(this);
 
-               
-                for (let pair of formData.entries()) {
-                    console.log(pair[0]+ ': ' + pair[1]); 
-                }
 
-                fetch('ValidarCorreo', {
-                    method: 'POST',
-                    body: new URLSearchParams(formData)
-                })
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
+
+        fetch('/ValidarCorreo', {
+            method: 'POST',
+            body: new URLSearchParams(formData)
+        })
                 .then(response => response.text())
                 .then(data => {
-                    alert(data); 
+                    alert(data);
                     if (data === "Correo validado.") {
-                         window.location.href = 'cambiarpass.jsp';
+                        window.location.href = 'cambiarpass.jsp';
                     }
                 })
                 .catch(error => console.error('Error:', error));
-            });
-        });
+    });
+});

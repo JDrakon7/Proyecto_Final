@@ -29,8 +29,9 @@ public class AgregarCategoria extends HttpServlet {
     // Método para manejar solicitudes POST
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres de la solicitud
-        response.setContentType("text/html; charset=UTF-8");  // Establece el tipo de contenido y la codificación de caracteres de la respuesta
+        request.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres para la solicitud
+        response.setContentType("text/html; charset=UTF-8");  // Establece el tipo de contenido de la respuesta
+        response.setCharacterEncoding("UTF-8");  // Establece la codificación de caracteres para la respuesta
         
         String nombreCategoria = request.getParameter("nombre_categoria");  // Obtiene el parámetro de nombre de categoría desde la solicitud
 
