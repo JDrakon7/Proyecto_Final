@@ -4,26 +4,16 @@
  */
 
 
-export function validar_campos(formId, fieldIds) {
-    const form = document.getElementById(formId);
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            let allFieldsFilled = true;
-            fieldIds.forEach(id => {
-                const field = document.getElementById(id);
-                if (field && field.value.trim() === '') {
-                    allFieldsFilled = false;
-                }
-            });
+// Función para validar los campos del formulario
+export function validarCampos(form) {
+    const email = form.querySelector('#user').value.trim();
+    const password = form.querySelector('#pass').value.trim();
 
-            if (!allFieldsFilled) {
-                alert('Por favor, complete todos los campos.');
-                event.preventDefault();
-            }
-        });
-    } else {
-        console.error('Formulario no encontrado');
+    // Comprobar si alguno de los campos está vacío
+    if (!email || !password) {
+        return false; // Campos vacíos
     }
+    return true; // Campos completos
 }
 
 
