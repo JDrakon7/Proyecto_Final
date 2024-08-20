@@ -45,6 +45,6 @@
         </div>
 
     </body>
-    <script src="js/historial.js"></script>
+    <script src="js/historial.js" type="module"></script>
 </html>
 

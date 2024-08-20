@@ -2,6 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
+
+import { URL } from './config.js';
+
+
 document.addEventListener("DOMContentLoaded", function() {
     const chatContainer = document.getElementById("chat-container");
     const userId = sessionStorage.getItem('userId');
@@ -14,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const loadChatHistory = () => {
-        fetch("${URL}/${historial}", {  
+        fetch(`${URL}historial`, {  
             method: "GET",
             headers: {
                 "Content-Type": "application/json ; charset=UTF-8"

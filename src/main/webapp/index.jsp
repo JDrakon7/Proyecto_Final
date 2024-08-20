@@ -22,11 +22,11 @@ Author     : JDBJ
                 <div class="login-form">
                     <form id="login-form" action="login" method="POST">
                         <div class="group">
-                            <label for="user" id="user" class="label">Usuario</label>
+                            <label id="user" class="label">Usuario</label>
                             <input id="user" type="text" class="input" name="email">
                         </div>
                         <div class="group">
-                            <label for="pass" id="password" class="label">Password</label>
+                            <label for="pass" class="label">Password</label>
                             <input id="pass" type="password" class="input" data-type="password" name="password">
                         </div>
                         <div class="group">
@@ -43,6 +43,6 @@ Author     : JDBJ
                 </div>
             </div>
         </div>
-        <script src="js/login.js"></script>
+        <script src="js/login.js" type="module"></script>
     </body>
 </html>
