@@ -37,7 +37,6 @@
                 <select id="role" name="role">
                     <option value="1">User</option>
                     <option value="2">Admin</option>
-                    <option value="4">Inhabilitar</option> 
                 </select>
             </div>
             <button type="submit" class="btn">Actualizar Rol</button>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")  // Anotación que mapea este servlet a la URL /login
 public class Login_servlet extends HttpServlet {
-
+    
     private static final long serialVersionUID = 1L;  // Identificador de versión para la serialización
 
     // Método que maneja las solicitudes POST
@@ -24,29 +24,8 @@ public class Login_servlet extends HttpServlet {
 
         // Crear una instancia del DAO_login
         DAO_login daoLogin = new DAO_login();
-        
         // Validar las credenciales del usuario y obtener el objeto User
         User user = daoLogin.validateAndGetUser(email, password);
-        
-        if (daoLogin.isUserInactive(email)) {
-            response.setContentType("text/plain");
-            response.getWriter().write("user_inactive");
-            return;
-        }
-        
-        if (daoLogin.validateCredentials(email, password)) {
-            // Si el usuario es válido
-            HttpSession session = request.getSession();
-            session.setAttribute("email", email);
-            response.setContentType("text/plain");
-            response.getWriter().write("success"); // Envía una respuesta de éxito
-        }else {
-            // Credenciales inválidas
-            response.setContentType("text/plain");
-            response.getWriter().write("invalid_credentials");
-        }
-        
-
 
         if (user != null) {
             // Si el usuario es válido, se crea una sesión y se redirige al usuario a la interfaz
@@ -58,15 +37,15 @@ public class Login_servlet extends HttpServlet {
             response.sendRedirect("interfaz.jsp");  // Redirigir a la interfaz principal
         } else {
             // Si la validación falla, se redirige al usuario a la página de inicio con un error
-            response.getWriter().write("invalid_credentials");  // Enviar respuesta de error  
+            response.sendRedirect("index.jsp?error=invalid_credentials");  // Redirigir a la página de inicio con un mensaje de error
         }
     }
-
+    
     // Método que maneja las solicitudes GET para cierre de sesión
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");  // Obtener la acción de la solicitud
-        if ("logout".equals(action)) {
+       if ("logout".equals(action)) {
             HttpSession session = request.getSession();
             session.invalidate(); // Invalidar la sesión
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
