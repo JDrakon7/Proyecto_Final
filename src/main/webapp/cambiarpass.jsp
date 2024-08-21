@@ -12,28 +12,17 @@
     <link rel="stylesheet" href="css/password.css">
 </head>
 <body>
-       <%
-    // Verificar si el usuario está autenticado
-    if (session == null || session.getAttribute("email") == null) {
-        response.sendRedirect("index.jsp");
-        return;
-    }
-    // Configurar las cabeceras de no caché
-    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-    response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-    response.setDateHeader("Expires", 0); // Proxies.
-%>
     <div class="reset-password-wrap">
         <div class="reset-password-html">
             <h2 class="title">Restablecer Contraseña</h2>
             <form id="reset-password-form">
                 <div class="group">
                     <label for="password" class="label">Nueva Contraseña</label>
-                    <input id="password" name="password" type="password" class="input" required>
+                    <input id="password" name="password" type="password" class="input" >
                 </div>
                 <div class="group">
                     <label for="confirmar_password" class="label">Confirmar Contraseña</label>
-                    <input id="confirmar_password" name="confirmar_password" type="password" class="input" required>
+                    <input id="confirmar_password" name="confirmar_password" type="password" class="input">
                 </div>
                 <div class="group">
                     <button type="submit" class="button">Enviar</button>
@@ -50,7 +39,12 @@
                 event.preventDefault();
                 const password = document.getElementById('password').value;
                 const confirmarPassword = document.getElementById('confirmar_password').value;
-
+                
+                if (!password){
+                    alert('Ingrese la nueva contraseña');
+                    return;
+                }
+                
                 if (password !== confirmarPassword) {
                     alert('Las contraseñas no coinciden.');
                     return;

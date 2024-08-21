@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             console.log(pair[0] + ': ' + pair[1]);
         }
 
-        fetch('/ValidarCorreo', {
+        fetch('http://localhost:8080/Proyecto2/ValidarCorreo', {
             method: 'POST',
             body: new URLSearchParams(formData)
         })
