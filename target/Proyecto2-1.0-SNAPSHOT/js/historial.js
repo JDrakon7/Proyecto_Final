@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     const loadChatHistory = () => {
-        fetch(`${URL}historial`, {  
+        fetch('historial', {  
             method: "GET",
             headers: {
                 "Content-Type": "application/json ; charset=UTF-8"

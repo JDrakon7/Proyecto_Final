@@ -17,6 +17,7 @@ Modelo\Entrenamiento\EliminarEntrenamiento.class
 Modelo\Historial\VerHistorialServlet.class
 Controlador\ServletAgregarEntrenamiento.class
 Modelo\DAO_login$User.class
+Controlador\ObtenerUsuarios.class
 Controlador\JavaEE8Resource.class
 Modelo\Entrenamiento\LeerEntrenamiento.class
 Controlador\Servlet_Correovalidar.class

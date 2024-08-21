@@ -24,8 +24,29 @@ public class Login_servlet extends HttpServlet {
 
         // Crear una instancia del DAO_login
         DAO_login daoLogin = new DAO_login();
+        
         // Validar las credenciales del usuario y obtener el objeto User
         User user = daoLogin.validateAndGetUser(email, password);
+        
+        if (daoLogin.isUserInactive(email)) {
+            response.setContentType("text/plain");
+            response.getWriter().write("user_inactive");
+            return;
+        }
+        
+        if (daoLogin.validateCredentials(email, password)) {
+            // Si el usuario es válido
+            HttpSession session = request.getSession();
+            session.setAttribute("email", email);
+            response.setContentType("text/plain");
+            response.getWriter().write("success"); // Envía una respuesta de éxito
+        }else {
+            // Credenciales inválidas
+            response.setContentType("text/plain");
+            response.getWriter().write("invalid_credentials");
+        }
+        
+
 
         if (user != null) {
             // Si el usuario es válido, se crea una sesión y se redirige al usuario a la interfaz

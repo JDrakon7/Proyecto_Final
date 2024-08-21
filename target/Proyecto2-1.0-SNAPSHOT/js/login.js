@@ -3,6 +3,62 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('login-form');
+
+    if (form) {
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const email = document.querySelector('input[name="email"]').value.trim();
+            const password = document.querySelector('input[name="password"]').value.trim();
+
+            // Validar campos vacíos
+            if (!email || !password) {
+                alert('Por favor, complete todos los campos.');
+                return; // Detiene la ejecución si hay campos vacíos
+            }
+
+            // Enviar la solicitud Ajax
+            fetch('login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    email: email,
+                    password: password
+                })
+            })
+            .then(response => response.text())
+            .then(text => {
+                if (text === 'invalid_credentials') {
+                    alert('Credenciales incorrectas. Por favor, intente de nuevo.');
+                } else if (text === 'user_inactive') {
+                    alert('El usuario está inhabilitado.');
+                } else {
+                    // Redirigir a la interfaz principal si la autenticación es exitosa
+                    window.location.href = 'interfaz.jsp';
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    } else {
+        console.error('Formulario de login no encontrado');
+    }
+});
+
+
+
+
+
+
+
+
+
+/*
 document.addEventListener('DOMContentLoaded', function() {
     let form = document.getElementById('login-form');
 

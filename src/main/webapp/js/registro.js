@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     correo(event, emailInput);  // Valida el primer correo
     correo(event, confirmarEmailInput);  // Valida el segundo correo
 
-    // Adicionalmente, podrías agregar una validación para confirmar que ambos correos coinciden
+    // Validar si lso correos coninciden
     if (emailInput.value !== confirmarEmailInput.value) {
       alert("Los correos electrónicos no coinciden.");
-      event.preventDefault(); // Previene el envío del formulario si los correos no coinciden
+      event.preventDefault(); // si no coinciden no se envia el formulario
     }
   });
 });
@@ -32,14 +32,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
     // Agrega un manejador de eventos para el submit
     form.addEventListener("submit", function(event) {
-        // Llama a la función de validación
+        // Llamar a la funcion validar
         if (!validarFormulario()) {
-            // Si la validación falla, previene el envío del formulario
+            // Si la validacion falla, no se envia el formulario
             event.preventDefault();
         }
     });
 
-    // Funcion de validación del formulario
+    //  validaciones del formulario
     function validarFormulario() {
         const nombre = document.getElementById("nombre").value.trim();
         const email = document.getElementById("email").value.trim();
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const password = document.getElementById("password").value.trim();
         const confirmarPassword = document.getElementById("confirmar_password").value.trim();
 
-        // Validaciones básicas
+        // Validaciones de campos
         if (nombre === "" || email === "" || confirmarEmail === "" || password === "" || confirmarPassword === "") {
             alert("Todos los campos son obligatorios.");
             return false;

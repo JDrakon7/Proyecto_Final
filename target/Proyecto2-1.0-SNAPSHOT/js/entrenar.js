@@ -9,7 +9,7 @@ document.getElementById('training-form').addEventListener('submit', (event) => {
     const formData = new FormData(event.target);
     formData.append('id_usuario', '<%= session.getAttribute("userId") %>');
     
-    fetch(('${URL}/${AgregarEntrenamiento}'), {
+    fetch(('http://localhost:8080/Proyecto2/AgregarEntrenamiento'), {
         method: 'POST',
         body: new URLSearchParams(formData)
     })
