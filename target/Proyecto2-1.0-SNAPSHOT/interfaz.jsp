@@ -24,10 +24,19 @@
 
 <body>
    <%
+    
     // Verificar si el usuario está autenticado
     if (session == null || session.getAttribute("email") == null) {
         response.sendRedirect("index.jsp");
-        return;
+    } else {
+        String role = (String) session.getAttribute("role");
+      
+        // Verificar si el rol es "inhabilitado" (sin distinción de mayúsculas y minúsculas)
+        if ("inhabilitado".equalsIgnoreCase(role.trim())) {
+            session.invalidate();
+            response.sendRedirect("error.jsp");
+            return;
+        }
     }
     // Configurar las cabeceras de no caché
     response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.

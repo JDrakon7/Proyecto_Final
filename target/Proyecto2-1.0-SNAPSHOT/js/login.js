@@ -3,66 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
-    let form = document.getElementById('login-form');
-
-    if (form) {
-        form.addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            let email = document.querySelector('.input[name="email"]').value.trim();
-            let password = document.querySelector('.input[name="password"]').value.trim();
-
-            // Validar campos vacíos
-            if (!email || !password) {
-                alert('Por favor, complete todos los campos.');
-                return; // Detiene la ejecución si hay campos vacíos
-            }
-
-            // Enviar la solicitud Ajax
-            fetch('login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams({
-                    email: email,
-                    password: password
-                })
-            })
-            .then(response => response.text())
-            .then(text => {
-                if (text === 'invalid_credentials') {
-                    alert('Credenciales incorrectas. Por favor, intente de nuevo.');
-                } else if (text === 'Inhabilitado') {
-                    alert('Tu cuenta está inhabilitada o no tienes permisos para acceder.');
-                    // No redirige, impide el inicio de sesión.
-                } else if (text === 'success') {
-                    // Se inicia la sesión y se permite ingresar a la interfaz
-                    window.location.href = 'interfaz.jsp';
-                } else {
-                    alert('Ocurrió un error inesperado. Por favor, intenta nuevamente.');
-                }
-            })
-            .catch(error => console.error('Error:', error));
-        });
-    } else {
-        console.error('Formulario de login no encontrado');
-    }
-});
-
-
-
-
-
-
-
-
-
-
-/*document.addEventListener('DOMContentLoaded', function() {
     let form = document.getElementById('login-form');
 
     if (form) {

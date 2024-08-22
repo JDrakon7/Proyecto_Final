@@ -20,7 +20,7 @@
             <form id="forgot-password-form" action="ValidarCorreo" method="post">
                 <div class="group">
                     <label for="email" class="label">Email</label>
-                    <input id="email" name="email" type="email" class="input" required>
+                    <input id="email" name="email" type="email" class="input">
                 </div>
                 <div class="group">
                     <button type="submit" class="button">Enviar</button>

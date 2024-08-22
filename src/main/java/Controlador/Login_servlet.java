@@ -12,11 +12,11 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/login")  // Anotación que mapea este servlet a la URL /login
 public class Login_servlet extends HttpServlet {
-
+    
     private static final long serialVersionUID = 1L;  // Identificador de versión para la serialización
 
     // Método que maneja las solicitudes POST
-    @Override
+     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -31,21 +31,17 @@ public class Login_servlet extends HttpServlet {
             session.setAttribute("userId", user.getUserId());
             session.setAttribute("nombre", user.getUsername());
             response.getWriter().write("success");  // Enviar respuesta de éxito
-            if ("inhabilitado".equals(role)) {
-                response.getWriter().write("inhabilitado");  // Usuario inhabilitado
-            } else {
-                response.getWriter().write("success");  // Autenticación exitosa
-            }
         } else {
-            response.getWriter().write("invalid_credentials");  // Credenciales incorrectas
+            response.getWriter().write("invalid_credentials");  // Enviar respuesta de error
         }
     }
 
+    
     // Método que maneja las solicitudes GET para cierre de sesión
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");  // Obtener la acción de la solicitud
-        if ("logout".equals(action)) {
+       if ("logout".equals(action)) {
             HttpSession session = request.getSession();
             session.invalidate(); // Invalidar la sesión
             response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.

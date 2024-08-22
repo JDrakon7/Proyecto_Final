@@ -14,6 +14,20 @@ Author     : JDBJ
     </head>
 
     <body>
+
+        <%
+            // Verificar si el usuario está autenticado y tiene un rol válido
+            if (session != null && session.getAttribute("email") != null) {
+                String role = (String) session.getAttribute("role");
+                if ("Inhabilitado".equalsIgnoreCase(role)) {
+                    // Redirigir a una página de error si el rol es "inhabilitado"
+                    response.sendRedirect("error.jsp?mensaje=Tu cuenta ha sido inhabilitada");
+                } else {
+                    // Redirigir a la interfaz principal si el rol es válido
+                    response.sendRedirect("interfaz.jsp");
+                }
+            } 
+        %>
         <div class="login-wrap">
             <div class="login-html">
                 <div class="img">

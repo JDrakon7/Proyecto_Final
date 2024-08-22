@@ -176,4 +176,4 @@ def chatbot():
 if __name__ == "__main__":
     app.run(
         port=5000, debug=True
-    )  # Ejecuta la aplicación Flask en el puerto 5000 con modo de depuración activado
+    )  # Ejecuta la aplicación Flask en el puerto 5000 con modo de depuración act

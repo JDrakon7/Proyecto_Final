@@ -1,0 +1,88 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 10/08/2024, 3:26:23 p. m.
+    Author     : JDBJ
+*/
+
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ccc;
+}
+
+/* Contenedor principal */
+.login-wrap {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    background-color: white;
+}
+
+/* Contenedor del mensaje de error */
+.confirmation-html {
+    padding: 20px;
+    text-align: center;
+}
+
+/* Icono de error */
+.confirmation-icon {
+    font-size: 48px;
+    color: red;
+    margin-bottom: 10px;
+}
+
+/* Título del mensaje */
+h1 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+/* Texto del mensaje */
+p {
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* Botón de retorno */
+button {
+    padding: 10px 20px;
+    background-color: rgb(17, 97, 238);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3e8e41;
+}
+
+confirmation-icon {
+    font-size: 48px;
+    color: red;
+    margin-bottom: 10px;
+    animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(0);   
+ }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0);   
+ }
+}
