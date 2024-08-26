@@ -105,8 +105,8 @@
             throw new Error("Ventana no disponible");
         }
         
-        var _hash = "!";
-        var noBackPlease = function() {
+        let _hash = "!";
+        let noBackPlease = function() {
             global.location.href += "#";
 
             global.setTimeout(function() {
