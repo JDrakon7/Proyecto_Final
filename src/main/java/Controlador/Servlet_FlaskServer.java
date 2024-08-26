@@ -4,15 +4,16 @@
  */
 package Controlador;
 
-import java.io.InputStream;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutorService;
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream; // Importa la clase InputStream para leer datos de una fuente de entrada, como archivos o flujos de red.
+import java.util.concurrent.Executors; // Importa la clase Executors para crear y gestionar grupos de hilos (thread pools) de manera sencilla.
+import java.util.concurrent.ExecutorService; // Importa la interfaz ExecutorService para gestionar un grupo de hilos y ejecutar tareas concurrentemente.
+import java.io.IOException; // Importa la clase IOException para manejar excepciones relacionadas con operaciones de entrada/salida, como errores al leer o escribir datos.
+import javax.servlet.ServletException; // Importa la clase ServletException para manejar excepciones que pueden ocurrir durante la ejecución de servlets.
+import javax.servlet.annotation.WebServlet; // Importa la anotación WebServlet para definir y configurar un servlet en una aplicación web de manera declarativa.
+import javax.servlet.http.HttpServlet; // Importa la clase HttpServlet, que es la clase base para crear servlets que responden a solicitudes HTTP.
+import javax.servlet.http.HttpServletRequest; // Importa la clase HttpServletRequest para manejar la solicitud HTTP enviada por el cliente.
+import javax.servlet.http.HttpServletResponse; // Importa la clase HttpServletResponse para manejar la respuesta HTTP que se envía al cliente.
+
 
 /**
  * Servlet para iniciar y detener un servidor Flask y script del chatbot.
