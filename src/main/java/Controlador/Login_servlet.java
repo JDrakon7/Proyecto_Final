@@ -1,14 +1,14 @@
 package Controlador;
 
-import Modelo.DAO_login;
-import Modelo.DAO_login.User;
-import java.io.IOException;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import Modelo.DAO_login; // Importa la clase DAO_login del paquete Modelo, que maneja operaciones relacionadas con el acceso a datos para el login de usuarios.
+import Modelo.DAO_login.User; // Importa la clase User anidada en DAO_login, probablemente una representación del usuario en el contexto del login.
+import java.io.IOException; // Importa la clase IOException para manejar excepciones relacionadas con operaciones de entrada/salida, como errores al leer o escribir datos.
+import javax.servlet.ServletException; // Importa la clase ServletException para manejar excepciones que pueden ocurrir durante la ejecución de servlets.
+import javax.servlet.annotation.WebServlet; // Importa la anotación WebServlet para definir y configurar un servlet en una aplicación web de manera declarativa.
+import javax.servlet.http.HttpServlet; // Importa la clase HttpServlet, que es la clase base para crear servlets que responden a solicitudes HTTP.
+import javax.servlet.http.HttpServletRequest; // Importa la clase HttpServletRequest para manejar la solicitud HTTP enviada por el cliente.
+import javax.servlet.http.HttpServletResponse; // Importa la clase HttpServletResponse para manejar la respuesta HTTP que se envía al cliente.
+import javax.servlet.http.HttpSession; // Importa la clase HttpSession para manejar la sesión del usuario en una aplicación web, permitiendo almacenar datos específicos de la sesión.
 
 @WebServlet("/login")  // Anotación que mapea este servlet a la URL /login
 public class Login_servlet extends HttpServlet {
