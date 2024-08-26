@@ -124,7 +124,7 @@
             noBackPlease();
 
             document.body.onkeydown = function(e) {
-                var elm = e.target.nodeName.toLowerCase();
+                let elm = e.target.nodeName.toLowerCase();
                 if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
                     e.preventDefault();
                 }
@@ -152,7 +152,7 @@
                 throw new Error("Ventana no disponible");
             }
             
-            var _hash = "!";
+            let _hash = "!";
             global.location.href += "#";
 
             global.setTimeout(function() {
@@ -167,7 +167,7 @@
 
             global.onload = function() {
                 document.body.onkeydown = function(e) {
-                    var elm = e.target.nodeName.toLowerCase();
+                    let elm = e.target.nodeName.toLowerCase();
                     if (e.which === 8 && (elm !== 'input' && elm  !== 'textarea')) {
                         e.preventDefault();
                     }
