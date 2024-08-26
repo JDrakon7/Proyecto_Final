@@ -4,18 +4,17 @@
  */
 package Controlador;
 
-import Modelo.DAO_login;
-import Modelo.DAO_login.User;
-import com.google.gson.Gson;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.List;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
+import Modelo.DAO_login; // Importa la clase DAO_login del paquete Modelo, que maneja operaciones de acceso a datos para el login.
+import Modelo.DAO_login.User; // Importa la clase User anidada en DAO_login, probablemente una representación del usuario en el contexto del login.
+import com.google.gson.Gson; // Importa la clase Gson de la biblioteca de Google para manipular JSON.
+import java.io.IOException; // Importa la clase IOException para manejar excepciones relacionadas con operaciones de entrada/salida.
+import java.io.PrintWriter; // Importa la clase PrintWriter para escribir datos en un flujo de salida, como en una respuesta HTTP.
+import java.util.List; // Importa la interfaz List, que representa una colección de elementos ordenados.
+import javax.servlet.ServletException; // Importa la clase ServletException para manejar errores en la ejecución de servlets.
+import javax.servlet.annotation.WebServlet; // Importa la anotación WebServlet para definir un servlet en una aplicación web.
+import javax.servlet.http.HttpServlet; // Importa la clase HttpServlet, que es la clase base para crear servlets que responden a solicitudes HTTP.
+import javax.servlet.http.HttpServletRequest; // Importa la clase HttpServletRequest para manejar las solicitudes HTTP.
+import javax.servlet.http.HttpServletResponse; // Importa la clase HttpServletResponse para manejar las respuestas HTTP.
 /**
  *
  * @author JDBJ
