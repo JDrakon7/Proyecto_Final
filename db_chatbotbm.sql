@@ -253,11 +253,8 @@ CREATE TABLE `tb_usuario` (
 --
 
 INSERT INTO `tb_usuario` (`id_usuario`, `nombre`, `email`, `fecha_registro`, `id_rol`) VALUES
-(1, 'Juan Admin', 'jdbarrera90@soy.sena.edu.co', '2024-07-02', 3),
-(4, 'Juan Barrera', 'juanb@gmail.com', '2024-07-09', 1),
-(6, 'Draco', 'draco@gmail.com', '2024-07-28', 1),
-(7, 'David30', 'david30@gmail.com', '2024-07-28', 1),
-(8, 'David10', 'david@gmail.com', '2024-07-28', 1);
+(1, 'Example', 'example@gmail.com'', '2024-07-02', 1);
+
 
 --
 -- Índices para tablas volcadas
