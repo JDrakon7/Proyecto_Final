@@ -112,11 +112,7 @@ CREATE TABLE `tb_login` (
 --
 
 INSERT INTO `tb_login` (`id_login`, `id_usuario`, `email`, `password`) VALUES
-(1, 1, 'juandavid219@outlook.com', 'martin03'),
-(2, 4, 'juanb@gmail.com', 'martin03'),
-(3, 6, 'draco@gmail.com', 'martin03'),
-(4, 7, 'david30@gmail.com', 'martin03'),
-(5, 8, 'david@gmail.com', 'martin03');
+
 
 -- --------------------------------------------------------
 
